@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ICEGames GameStation</title>
+
+  <style>
+    /* ✅ MOVING ICE BACKGROUND */
+    body {
+      margin: 0;
+      font-family: Arial;
+      color: cyan;
+      text-align: center;
+      background: linear-gradient(270deg, #001, #004, #00aaff, #001);
+      background-size: 600% 600%;
+      animation: iceMove 20s ease infinite;
+    }
+
+    @keyframes iceMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ✅ FLOATING ICE PARTICLES */
+    .ice-particle {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      background: cyan;
+      border-radius: 50%;
+      opacity: 0.7;
+      pointer-events: none;
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(110vh); }
+      to { transform: translateY(-10vh); }
+    }
+
+    header {
+      font-size: 36px;
+      padding: 20px;
+      background: rgba(0,0,0,0.85);
+    }
+
+    nav {
+      background: rgba(0,0,0,0.9);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    nav a {
+      color: cyan;
+      text-decoration: none;
+      margin: 6px 12px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .category {
+      padding: 30px 15px;
+    }
+
+    .games {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .game {
+      background: rgba(0,0,0,0.75);
+      padding: 12px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px cyan;
+    }
+
+    .game a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .game a:hover {
+      color: cyan;
+    }
+    /* ===== ICEGAMES ANIMATED LOGO ===== */
+.logo-container {
+  padding: 30px 10px 25px;
+  background: rgba(0,0,0,0.85);
+  box-shadow: 0 0 20px cyan;
+}
+
+.ice-logo {
+  font-size: 64px;
+  font-weight: 900;
+  color: cyan;
+  letter-spacing: 5px;
+  position: relative;
+  display: inline-block;
+  text-shadow:
+    0 0 10px cyan,
+    0 0 20px cyan,
+    0 0 40px cyan;
+  animation: pulseGlow 3s ease-in-out infinite;
+  overflow: hidden;
+}
+
+.ice-logo span {
+  color: white;
+}
+
+/* Light sweep animation */
+.ice-logo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(120deg,
+    transparent,
+    rgba(255,255,255,0.7),
+    transparent);
+  animation: logoShine 4s infinite;
+}
+
+.logo-sub {
+  font-size: 18px;
+  color: #aff;
+  margin-top: 5px;
+  letter-spacing: 2px;
+}
+
+/* Logo Animations */
+@keyframes pulseGlow {
+  0%   { transform: scale(1); text-shadow: 0 0 10px cyan; }
+  50%  { transform: scale(1.04); text-shadow: 0 0 35px cyan; }
+  100% { transform: scale(1); text-shadow: 0 0 10px cyan; }
+}
+
+@keyframes logoShine {
+  0%   { left: -150%; }
+  50%  { left: 150%; }
+  100% { left: 150%; }
+}
+
+/* ===== SEARCH BAR ===== */
+#searchBar {
+  margin-top: 20px;
+  width: 50%;
+  padding: 12px;
+  font-size: 17px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: rgba(0,255,255,0.1);
+  color: cyan;
+  box-shadow: 0 0 10px cyan;
+}
+
+#searchBar::placeholder {
+  color: #99ffff;
+}
+/* ===== INFO SECTIONS ===== */
+.info-section {
+  background: rgba(0,0,0,0.75);
+  margin: 40px auto;
+  width: 80%;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px cyan;
+  color: white;
+}
+
+.info-section h2 {
+  font-size: 32px;
+  color: cyan;
+  text-shadow: 0 0 10px cyan;
+  margin-bottom: 10px;
+}
+
+.info-section h3 {
+  color: #88ffff;
+  margin-top: 20px;
+}
+
+.info-section p {
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+/* ===== CONTACT FORM ===== */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  font-size: 16px;
+  background: rgba(0,255,255,0.1);
+  border-radius: 10px;
+  border: none;
+  color: cyan;
+  box-shadow: 0 0 8px cyan;
+}
+
+.contact-form textarea {
+  height: 130px;
+  resize: none;
+}
+
+.contact-form button {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  background: cyan;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0 0 12px cyan;
+}
+
+.contact-form button:hover {
+  background: white;
+  box-shadow: 0 0 20px cyan;
+}
+.logo-link {
+  text-decoration: none;
+  color: inherit;
+}
+.logo-link:hover {
+  opacity: 0.9;
+}
+/* ===== ICE FOOTER ===== */
+.ice-footer {
+  background: rgba(0,0,0,0.9);
+  padding: 25px 10px;
+  text-align: center;
+  color: #99ffff;
+  box-shadow: 0 0 20px cyan;
+  margin-top: 40px;
+}
+
+.ice-footer p {
+  margin: 8px 0;
+}
+
+.social-icons {
+  margin: 15px 0;
+}
+
+.social-icons a {
+  font-size: 26px;
+  margin: 0 15px;
+  text-decoration: none;
+  color: cyan;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.social-icons a:hover {
+  transform: scale(1.3);
+  color: white;
+}
+
+.footer-text {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+  </style>
+</head>
+
+<body>
+<div id="top"></div>
+
+<header class="logo-container">
+  <a href="#top" class="logo-link">
+    <div class="ice-logo">ICE<span>Games</span></div>
+    <div class="logo-sub">GameStation</div>
+  </a>
+
+  <input type="text" id="searchBar" placeholder="Search games..." onkeyup="searchGames()">
+</header>
+
+
+
+<!-- ✅ NAV BAR (10 CATEGORIES) -->
+<nav>
+  <a href="index.html">Home</a>
+
+  <a href="#action">Action</a>
+  <a href="#adventure">Adventure</a>
+  <a href="#racing">Racing</a>
+  <a href="#shooting">Shooting</a>
+  <a href="#puzzle">Puzzle</a>
+  <a href="#sports">Sports</a>
+  <a href="#horror">Horror</a>
+  <a href="#strategy">Strategy</a>
+  <a href="#retro">Retro</a>
+
+  <a href="about.html">About</a>
+  <a href="faq.html">FAQ</a>
+  <a href="contact.html">Contact</a>
+
+  <a href="login.html">Login</a>
+  <a href="signup.html">Sign Up</a>
+</nav>
+
+
+
+
+<!-- ✅ ACTION -->
+<div id="action" class="category"><h2>🔥 Action</h2><div class="games">
+<a href="games/action1.html"  class="game">Action 1</a><a href="games/action2.html"  class="game">Action 2</a>
+<a href="games/action3.html"  class="game">Action 3</a><a href="games/action4.html"  class="game">Action 4</a>
+<a href="games/action5.html"  class="game">Action 5</a><a href="games/action6.html"  class="game">Action 6</a>
+<a href="games/action7.html"  class="game">Action 7</a><a href="games/action8.html"  class="game">Action 8</a>
+<a href="games/action9.html"  class="game">Action 9</a><a href="games/action10.html" class="game">Action 10</a>
+</div></div>
+
+<!-- ✅ ADVENTURE -->
+<div id="adventure" class="category"><h2>🧭 Adventure</h2><div class="games">
+<a href="games/adventure1.html" class="game">Adventure 1</a><a href="games/adventure2.html" class="game">Adventure 2</a>
+<a href="games/adventure3.html" class="game">Adventure 3</a><a href="games/adventure4.html" class="game">Adventure 4</a>
+<a href="games/adventure5.html" class="game">Adventure 5</a><a href="games/adventure6.html" class="game">Adventure 6</a>
+<a href="games/adventure7.html" class="game">Adventure 7</a><a href="games/adventure8.html" class="game">Adventure 8</a>
+<a href="games/adventure9.html" class="game">Adventure 9</a><a href="games/adventure10.html" class="game">Adventure 10</a>
+</div></div>
+
+<!-- ✅ RACING -->
+<div id="racing" class="category"><h2>🏎 Racing</h2><div class="games">
+<a href="games/racing1.html" class="game">Racing 1</a><a href="games/racing2.html" class="game">Racing 2</a>
+<a href="games/racing3.html" class="game">Racing 3</a><a href="games/racing4.html" class="game">Racing 4</a>
+<a href="games/racing5.html" class="game">Racing 5</a><a href="games/racing6.html" class="game">Racing 6</a>
+<a href="games/racing7.html" class="game">Racing 7</a><a href="games/racing8.html" class="game">Racing 8</a>
+<a href="games/racing9.html" class="game">Racing 9</a><a href="games/racing10.html" class="game">Racing 10</a>
+</div></div>
+
+<!-- ✅ SHOOTING -->
+<div id="shooting" class="category"><h2>🔫 Shooting</h2><div class="games">
+<a href="games/shooting1.html" class="game">Shooting 1</a><a href="games/shooting2.html" class="game">Shooting 2</a>
+<a href="games/shooting3.html" class="game">Shooting 3</a><a href="games/shooting4.html" class="game">Shooting 4</a>
+<a href="games/shooting5.html" class="game">Shooting 5</a><a href="games/shooting6.html" class="game">Shooting 6</a>
+<a href="games/shooting7.html" class="game">Shooting 7</a><a href="games/shooting8.html" class="game">Shooting 8</a>
+<a href="games/shooting9.html" class="game">Shooting 9</a><a href="games/shooting10.html" class="game">Shooting 10</a>
+</div></div>
+
+<!-- ✅ PUZZLE -->
+<div id="puzzle" class="category"><h2>🧩 Puzzle</h2><div class="games">
+<a href="games/puzzle1.html" class="game">Puzzle 1</a><a href="games/puzzle2.html" class="game">Puzzle 2</a>
+<a href="games/puzzle3.html" class="game">Puzzle 3</a><a href="games/puzzle4.html" class="game">Puzzle 4</a>
+<a href="games/puzzle5.html" class="game">Puzzle 5</a><a href="games/puzzle6.html" class="game">Puzzle 6</a>
+<a href="games/puzzle7.html" class="game">Puzzle 7</a><a href="games/puzzle8.html" class="game">Puzzle 8</a>
+<a href="games/puzzle9.html" class="game">Puzzle 9</a><a href="games/puzzle10.html" class="game">Puzzle 10</a>
+</div></div>
+
+<!-- ✅ SPORTS -->
+<div id="sports" class="category"><h2>⚽ Sports</h2><div class="games">
+<a href="games/sports1.html" class="game">Sports 1</a><a href="games/sports2.html" class="game">Sports 2</a>
+<a href="games/sports3.html" class="game">Sports 3</a><a href="games/sports4.html" class="game">Sports 4</a>
+<a href="games/sports5.html" class="game">Sports 5</a><a href="games/sports6.html" class="game">Sports 6</a>
+<a href="games/sports7.html" class="game">Sports 7</a><a href="games/sports8.html" class="game">Sports 8</a>
+<a href="games/sports9.html" class="game">Sports 9</a><a href="games/sports10.html" class="game">Sports 10</a>
+</div></div>
+
+<!-- ✅ HORROR -->
+<div id="horror" class="category"><h2>👻 Horror</h2><div class="games">
+<a href="games/horror1.html" class="game">Horror 1</a><a href="games/horror2.html" class="game">Horror 2</a>
+<a href="games/horror3.html" class="game">Horror 3</a><a href="games/horror4.html" class="game">Horror 4</a>
+<a href="games/horror5.html" class="game">Horror 5</a><a href="games/horror6.html" class="game">Horror 6</a>
+<a href="games/horror7.html" class="game">Horror 7</a><a href="games/horror8.html" class="game">Horror 8</a>
+<a href="games/horror9.html" class="game">Horror 9</a><a href="games/horror10.html" class="game">Horror 10</a>
+</div></div>
+
+<!-- ✅ STRATEGY -->
+<div id="strategy" class="category"><h2>♟ Strategy</h2><div class="games">
+<a href="games/strategy1.html" class="game">Strategy 1</a><a href="games/strategy2.html" class="game">Strategy 2</a>
+<a href="games/strategy3.html" class="game">Strategy 3</a><a href="games/strategy4.html" class="game">Strategy 4</a>
+<a href="games/strategy5.html" class="game">Strategy 5</a><a href="games/strategy6.html" class="game">Strategy 6</a>
+<a href="games/strategy7.html" class="game">Strategy 7</a><a href="games/strategy8.html" class="game">Strategy 8</a>
+<a href="games/strategy9.html" class="game">Strategy 9</a><a href="games/strategy10.html" class="game">Strategy 10</a>
+</div></div>
+
+<!-- ✅ RETRO -->
+<div id="retro" class="category"><h2>🕹 Retro</h2><div class="games">
+<a href="games/retro1.html" class="game">Retro 1</a><a href="games/retro2.html" class="game">Retro 2</a>
+<a href="games/retro3.html" class="game">Retro 3</a><a href="games/retro4.html" class="game">Retro 4</a>
+<a href="games/retro5.html" class="game">Retro 5</a><a href="games/retro6.html" class="game">Retro 6</a>
+<a href="games/retro7.html" class="game">Retro 7</a><a href="games/retro8.html" class="game">Retro 8</a>
+<a href="games/retro9.html" class="game">Retro 9</a><a href="games/retro10.html" class="game">Retro 10</a>
+</div></div>
+
+<!-- ✅ MULTIPLAYER -->
+<div id="multiplayer" class="category"><h2>🌐 Multiplayer</h2><div class="games">
+<a href="games/multi1.html" class="game">Multi 1</a><a href="games/multi2.html" class="game">Multi 2</a>
+<a href="games/multi3.html" class="game">Multi 3</a><a href="games/multi4.html" class="game">Multi 4</a>
+<a href="games/multi5.html" class="game">Multi 5</a><a href="games/multi6.html" class="game">Multi 6</a>
+<a href="games/multi7.html" class="game">Multi 7</a><a href="games/multi8.html" class="game">Multi 8</a>
+<a href="games/multi9.html" class="game">Multi 9</a><a href="games/multi10.html" class="game">Multi 10</a>
+</div></div>
+
+<!-- ✅ ICE PARTICLE GENERATOR -->
+<script>
+  for (let i = 0; i < 50; i++) {
+    let p = document.createElement("div");
+    p.className = "ice-particle";
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.animationDuration = (6 + Math.random() * 10) + "s";
+    p.style.opacity = Math.random();
+    document.body.appendChild(p);
+  }
+</script>
+<script>
+function searchGames() {
+  let input = document.getElementById("searchBar").value.toLowerCase();
+  let games = document.querySelectorAll(".game");
+
+  games.forEach(game => {
+    let text = game.innerText.toLowerCase();
+    game.style.display = text.includes(input) ? "block" : "none";
+  });
+}
+</script>
+<section id="about" class="info-section">
+  <h2>❄️ About ICEGames</h2>
+  <p>
+    ICEGames is a free online GameStation built for gamers who love Action, Adventure,
+    Racing, Puzzle, Retro, and more.  
+    We focus on SPEED, STYLE, and a COOL EXPERIENCE with our icy animated theme.
+  </p>
+</section>
+<section id="faq" class="info-section">
+  <h2>❓ FAQ</h2>
+
+  <h3>• How do I play a game?</h3>
+  <p>Simply click a game thumbnail — it will open in its own page.</p>
+
+  <h3>• Do SWF/Flash games work?</h3>
+  <p>Yes! ICEGames uses the Ruffle emulator so all .SWF Flash games can still run.</p>
+
+  <h3>• Can I submit my own game?</h3>
+  <p>Yes! Contact us using the form below.</p>
+
+  <h3>• Is ICEGames free?</h3>
+  <p>100% FREE — always.</p>
+</section>
+<section id="contact" class="info-section">
+  <h2>📩 Contact Us</h2>
+
+  <form class="contact-form">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+<footer class="ice-footer">
+  <p>❄️ Follow ICEGames ❄️</p>
+
+  <div class="social-icons">
+    <a href="#" title="Instagram">📸</a>
+    <a href="#" title="Discord">💬</a>
+    <a href="#" title="Facebook">📘</a>
+  </div>
+
+  <p class="footer-text">
+    © 2025 ICEGames GameStation — Preserving the Flash Era
+  </p>
+</footer>
+
+</body>
+</html>

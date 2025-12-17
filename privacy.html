@@ -1,690 +1,913 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | ICEGames GameStation</title>
-    <style>
-        :root {
-            --cyber-blue: #00ffff;
-            --deep-blue: #001122;
-            --neon-glow: 0 0 20px #00ffff, 0 0 40px #00ffff;
-            --ice-gradient: linear-gradient(135deg, #00ffff, #00ccff, #0099ff);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #000;
-            color: white;
-            min-height: 100vh;
-            background: linear-gradient(45deg, 
-                #000810 0%,
-                #001122 25%,
-                #002244 50%,
-                #003366 75%,
-                #004488 100%);
-            background-size: 400% 400%;
-            animation: backgroundShift 20s ease infinite;
-        }
-
-        @keyframes backgroundShift {
-            0% { background-position: 0% 0%; }
-            50% { background-position: 100% 100%; }
-            100% { background-position: 0% 0%; }
-        }
-
-        /* Navigation */
-        .nav-container {
-            background: rgba(0, 20, 40, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 40px;
-            border-bottom: 2px solid rgba(0, 255, 255, 0.3);
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
-        }
-
-        .nav-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            background: var(--ice-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            color: #88ffff;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            background: rgba(0, 255, 255, 0.1);
-            color: white;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-        }
-
-        /* Privacy Container */
-        .privacy-container {
-            max-width: 1000px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
-
-        .privacy-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .privacy-title {
-            font-size: 48px;
-            background: var(--ice-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-        }
-
-        .privacy-subtitle {
-            color: #88ffff;
-            font-size: 18px;
-            opacity: 0.9;
-        }
-
-        /* Privacy Content */
-        .privacy-content {
-            background: rgba(0, 30, 50, 0.7);
-            border-radius: 20px;
-            padding: 50px;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-        }
-
-        .section {
-            margin-bottom: 40px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
-        }
-
-        .section:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-        }
-
-        .section-title {
-            font-size: 28px;
-            color: var(--cyber-blue);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .section-title i {
-            font-size: 24px;
-        }
-
-        .section-content {
-            color: #b3ffff;
-            line-height: 1.8;
-        }
-
-        .section-content p {
-            margin-bottom: 15px;
-        }
-
-        /* Data Table */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            background: rgba(0, 40, 60, 0.4);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .data-table th {
-            background: rgba(0, 255, 255, 0.1);
-            color: var(--cyber-blue);
-            padding: 15px;
-            text-align: left;
-            font-weight: bold;
-        }
-
-        .data-table td {
-            padding: 15px;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
-        }
-
-        .data-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        /* Privacy Badges */
-        .privacy-badges {
-            display: flex;
-            gap: 15px;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            background: rgba(0, 255, 255, 0.1);
-            padding: 12px 24px;
-            border-radius: 25px;
-            border: 2px solid rgba(0, 255, 255, 0.3);
-            color: #88ffff;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Cookie Consent Preview */
-        .cookie-preview {
-            background: rgba(0, 40, 60, 0.5);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 30px 0;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-        }
-
-        .cookie-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 15px 0;
-        }
-
-        .toggle-label {
-            color: #b3ffff;
-        }
-
-        .toggle-switch {
-            position: relative;
-            width: 60px;
-            height: 30px;
-            background: rgba(0, 255, 255, 0.2);
-            border-radius: 15px;
-            cursor: pointer;
-        }
-
-        .toggle-switch::after {
-            content: '';
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            width: 26px;
-            height: 26px;
-            background: var(--cyber-blue);
-            border-radius: 50%;
-            transition: transform 0.3s ease;
-        }
-
-        /* Highlight Box */
-        .highlight-box {
-            background: rgba(0, 255, 255, 0.05);
-            border-left: 4px solid var(--cyber-blue);
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 0 10px 10px 0;
-        }
-
-        .highlight-box strong {
-            color: var(--cyber-blue);
-        }
-
-        /* Children's Privacy */
-        .children-box {
-            background: rgba(255, 153, 0, 0.1);
-            border-left: 4px solid #ff9900;
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 0 10px 10px 0;
-        }
-
-        /* Last Updated */
-        .last-updated {
-            text-align: center;
-            margin-top: 50px;
-            color: #88ffff;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
-        /* Footer */
-        .page-footer {
-            margin-top: 80px;
-            padding: 40px 20px;
-            background: rgba(0, 20, 40, 0.8);
-            border-top: 2px solid rgba(0, 255, 255, 0.3);
-            text-align: center;
-        }
-
-        .footer-text {
-            color: #88ffff;
-            margin: 10px 0;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-container {
-                padding: 15px 20px;
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Privacy Policy | ICEGames GameStation</title>
+        <style>
+            :root {
+                --cyber-blue: #00ffff;
+                --deep-blue: #001122;
+                --neon-glow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+                --ice-gradient: linear-gradient(
+                    135deg,
+                    #00ffff,
+                    #00ccff,
+                    #0099ff
+                );
             }
-            
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: "Arial", sans-serif;
+                background: #000;
+                color: white;
+                min-height: 100vh;
+                background: linear-gradient(
+                    45deg,
+                    #000810 0%,
+                    #001122 25%,
+                    #002244 50%,
+                    #003366 75%,
+                    #004488 100%
+                );
+                background-size: 400% 400%;
+                animation: backgroundShift 20s ease infinite;
+            }
+
+            @keyframes backgroundShift {
+                0% {
+                    background-position: 0% 0%;
+                }
+                50% {
+                    background-position: 100% 100%;
+                }
+                100% {
+                    background-position: 0% 0%;
+                }
+            }
+
+            /* Navigation */
+            .nav-container {
+                background: rgba(0, 20, 40, 0.95);
+                backdrop-filter: blur(10px);
+                padding: 15px 40px;
+                border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+                box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+            }
+
             .nav-content {
-                flex-direction: column;
+                max-width: 1400px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .logo {
+                font-size: 28px;
+                font-weight: bold;
+                background: var(--ice-gradient);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-decoration: none;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 25px;
+                flex-wrap: wrap;
+            }
+
+            .nav-links a {
+                color: #88ffff;
+                text-decoration: none;
+                padding: 8px 16px;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+            }
+
+            .nav-links a:hover {
+                background: rgba(0, 255, 255, 0.1);
+                color: white;
+                box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+            }
+
+            /* Privacy Container */
+            .privacy-container {
+                max-width: 1000px;
+                margin: 60px auto;
+                padding: 0 20px;
+            }
+
+            .privacy-header {
+                text-align: center;
+                margin-bottom: 50px;
+            }
+
+            .privacy-title {
+                font-size: 48px;
+                background: var(--ice-gradient);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                margin-bottom: 20px;
+                text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            }
+
+            .privacy-subtitle {
+                color: #88ffff;
+                font-size: 18px;
+                opacity: 0.9;
+            }
+
+            /* Privacy Content */
+            .privacy-content {
+                background: rgba(0, 30, 50, 0.7);
+                border-radius: 20px;
+                padding: 50px;
+                border: 1px solid rgba(0, 255, 255, 0.2);
+            }
+
+            .section {
+                margin-bottom: 40px;
+                padding-bottom: 30px;
+                border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+            }
+
+            .section:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+
+            .section-title {
+                font-size: 28px;
+                color: var(--cyber-blue);
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .section-title i {
+                font-size: 24px;
+            }
+
+            .section-content {
+                color: #b3ffff;
+                line-height: 1.8;
+            }
+
+            .section-content p {
+                margin-bottom: 15px;
+            }
+
+            /* Data Table */
+            .data-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 25px 0;
+                background: rgba(0, 40, 60, 0.4);
+                border-radius: 10px;
+                overflow: hidden;
+            }
+
+            .data-table th {
+                background: rgba(0, 255, 255, 0.1);
+                color: var(--cyber-blue);
+                padding: 15px;
+                text-align: left;
+                font-weight: bold;
+            }
+
+            .data-table td {
+                padding: 15px;
+                border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+            }
+
+            .data-table tr:last-child td {
+                border-bottom: none;
+            }
+
+            /* Privacy Badges */
+            .privacy-badges {
+                display: flex;
+                gap: 15px;
+                margin: 30px 0;
+                flex-wrap: wrap;
+            }
+
+            .badge {
+                background: rgba(0, 255, 255, 0.1);
+                padding: 12px 24px;
+                border-radius: 25px;
+                border: 2px solid rgba(0, 255, 255, 0.3);
+                color: #88ffff;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            /* Cookie Consent Preview */
+            .cookie-preview {
+                background: rgba(0, 40, 60, 0.5);
+                border-radius: 15px;
+                padding: 25px;
+                margin: 30px 0;
+                border: 1px solid rgba(0, 255, 255, 0.2);
+            }
+
+            .cookie-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: 15px 0;
+            }
+
+            .toggle-label {
+                color: #b3ffff;
+            }
+
+            .toggle-switch {
+                position: relative;
+                width: 60px;
+                height: 30px;
+                background: rgba(0, 255, 255, 0.2);
+                border-radius: 15px;
+                cursor: pointer;
+            }
+
+            .toggle-switch::after {
+                content: "";
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                width: 26px;
+                height: 26px;
+                background: var(--cyber-blue);
+                border-radius: 50%;
+                transition: transform 0.3s ease;
+            }
+
+            /* Highlight Box */
+            .highlight-box {
+                background: rgba(0, 255, 255, 0.05);
+                border-left: 4px solid var(--cyber-blue);
+                padding: 20px;
+                margin: 25px 0;
+                border-radius: 0 10px 10px 0;
+            }
+
+            .highlight-box strong {
+                color: var(--cyber-blue);
+            }
+
+            /* Children's Privacy */
+            .children-box {
+                background: rgba(255, 153, 0, 0.1);
+                border-left: 4px solid #ff9900;
+                padding: 20px;
+                margin: 25px 0;
+                border-radius: 0 10px 10px 0;
+            }
+
+            /* Last Updated */
+            .last-updated {
+                text-align: center;
+                margin-top: 50px;
+                color: #88ffff;
+                font-size: 14px;
+                opacity: 0.8;
+            }
+
+            /* Footer */
+            .page-footer {
+                margin-top: 80px;
+                padding: 40px 20px;
+                background: rgba(0, 20, 40, 0.8);
+                border-top: 2px solid rgba(0, 255, 255, 0.3);
                 text-align: center;
             }
-            
-            .privacy-title {
-                font-size: 36px;
-            }
-            
-            .privacy-content {
-                padding: 30px 20px;
-            }
-            
-            .data-table {
-                display: block;
-                overflow-x: auto;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="nav-container">
-        <div class="nav-content">
-            <a href="index.html" class="logo">ICEGAMES</a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="faq.html">FAQ</a>
-                <a href="contact.html">Contact</a>
-                <a href="terms.html">Terms</a>
-                <a href="privacy.html" style="color: var(--cyber-blue); font-weight: bold;">Privacy</a>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Privacy Container -->
-    <div class="privacy-container">
-        <div class="privacy-header">
-            <h1 class="privacy-title">Privacy Policy</h1>
-            <p class="privacy-subtitle">Last Updated: January 1, 2025</p>
-        </div>
+            .footer-text {
+                color: #88ffff;
+                margin: 10px 0;
+            }
 
-        <!-- Privacy Badges -->
-        <div class="privacy-badges">
-            <div class="badge">🔐 Minimal Data Collection</div>
-            <div class="badge">🚫 No Data Selling</div>
-            <div class="badge">🌐 GDPR Compliant</div>
-            <div class="badge">👶 COPPA Compliant</div>
-        </div>
+            /* Responsive */
+            @media (max-width: 768px) {
+                .nav-container {
+                    padding: 15px 20px;
+                }
 
-        <!-- Privacy Content -->
-        <div class="privacy-content">
-            <!-- Introduction -->
-            <div class="section">
-                <h2 class="section-title">
-                    <span>📋</span> Introduction
-                </h2>
-                <div class="section-content">
-                    <p>At ICEGames ("we", "us", "our"), we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our digital preservation service.</p>
-                    
-                    <div class="highlight-box">
-                        <strong>Preservation First:</strong> As a digital preservation project, our primary goal is to preserve Flash games, not to collect user data. We minimize data collection whenever possible.
-                    </div>
-                    
-                    <p>By using ICEGames, you agree to the collection and use of information in accordance with this policy.</p>
+                .nav-content {
+                    flex-direction: column;
+                    text-align: center;
+                }
+
+                .privacy-title {
+                    font-size: 36px;
+                }
+
+                .privacy-content {
+                    padding: 30px 20px;
+                }
+
+                .data-table {
+                    display: block;
+                    overflow-x: auto;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="nav-container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">ICEGAMES</a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="term.html">Terms</a>
+                    <a
+                        href="privacy.html"
+                        style="color: var(--cyber-blue); font-weight: bold"
+                        >Privacy</a
+                    >
                 </div>
             </div>
+        </nav>
 
-            <!-- Information We Collect -->
-            <div class="section">
-                <h2 class="section-title">
-                    <span>📊</span> Information We Collect
-                </h2>
-                <div class="section-content">
-                    <p>We collect minimal information to provide and improve our service:</p>
-                    
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Data Type</th>
-                                <th>Purpose</th>
-                                <th>Storage</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Game Play Data</strong></td>
-                                <td>Analytics for preservation research</td>
-                                <td>Anonymized, 1 year</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Account Information</strong></td>
-                                <td>Optional account features</td>
-                                <td>Until account deletion</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Technical Data</strong></td>
-                                <td>Service optimization</td>
-                                <td>90 days</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Game Preferences</strong></td>
-                                <td>Personalized recommendations</td>
-                                <td>Local storage only</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
-                    <div class="highlight-box">
-                        <strong>Important:</strong> We do not require personal information to play games. Most data collection is optional or anonymized.
-                    </div>
-                </div>
+        <!-- Privacy Container -->
+        <div class="privacy-container">
+            <div class="privacy-header">
+                <h1 class="privacy-title">Privacy Policy</h1>
+                <p class="privacy-subtitle">Last Updated: January 1, 2025</p>
             </div>
 
-            <!-- How We Use Information -->
-            <div class="section">
-                <h2 class="section-title">
-                    <span>🎯</span> How We Use Information
-                </h2>
-                <div class="section-content">
-                    <p>We use collected information for the following purposes:</p>
-                    <ul style="padding-left: 30px; margin: 15px 0;">
-                        <li><strong>Preservation Research:</strong> Understanding which games are most played to prioritize preservation efforts</li>
-                        <li><strong>Service Improvement:</strong> Optimizing game loading and emulation performance</li>
-                        <li><strong>Account Features:</strong> Enabling game progress saving and favorites</li>
-                        <li><strong>Legal Compliance:</strong> Meeting our legal obligations</li>
-                        <li><strong>Communication:</strong> Responding to user inquiries (if provided)</li>
-                    </ul>
-                    
-                    <p>We never sell your personal information to third parties.</p>
-                </div>
+            <!-- Privacy Badges -->
+            <div class="privacy-badges">
+                <div class="badge">🔐 Minimal Data Collection</div>
+                <div class="badge">🚫 No Data Selling</div>
+                <div class="badge">🌐 GDPR Compliant</div>
+                <div class="badge">👶 COPPA Compliant</div>
             </div>
 
-            <!-- Cookies and Tracking -->
-            <div class="section">
-                <h2 class="section-title">
-                    <span>🍪</span> Cookies and Tracking
-                </h2>
-                <div class="section-content">
-                    <p>We use minimal cookies for essential functionality:</p>
-                    
-                    <div class="cookie-preview">
-                        <h3 style="color: var(--cyber-blue); margin-bottom: 15px;">Cookie Preferences</h3>
-                        
-                        <div class="cookie-toggle">
-                            <span class="toggle-label">Essential Cookies</span>
-                            <div class="toggle-switch" style="background: rgba(0, 255, 255, 0.3);">
-                                <div style="transform: translateX(30px);"></div>
-                            </div>
+            <!-- Privacy Content -->
+            <div class="privacy-content">
+                <!-- Introduction -->
+                <div class="section">
+                    <h2 class="section-title"><span>📋</span> Introduction</h2>
+                    <div class="section-content">
+                        <p>
+                            At ICEGames ("we", "us", "our"), we take your
+                            privacy seriously. This Privacy Policy explains how
+                            we collect, use, disclose, and safeguard your
+                            information when you use our digital preservation
+                            service.
+                        </p>
+
+                        <div class="highlight-box">
+                            <strong>Preservation First:</strong> As a digital
+                            preservation project, our primary goal is to
+                            preserve Flash games, not to collect user data. We
+                            minimize data collection whenever possible.
                         </div>
-                        <p style="font-size: 14px; color: #88ffff; margin-top: 5px;">Required for basic functionality. Cannot be disabled.</p>
-                        
-                        <div class="cookie-toggle">
-                            <span class="toggle-label">Analytics Cookies</span>
-                            <div class="toggle-switch" id="analyticsToggle">
-                                <div></div>
-                            </div>
+
+                        <p>
+                            By using ICEGames, you agree to the collection and
+                            use of information in accordance with this policy.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Information We Collect -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <span>📊</span> Information We Collect
+                    </h2>
+                    <div class="section-content">
+                        <p>
+                            We collect minimal information to provide and
+                            improve our service:
+                        </p>
+
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Data Type</th>
+                                    <th>Purpose</th>
+                                    <th>Storage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Game Play Data</strong></td>
+                                    <td>Analytics for preservation research</td>
+                                    <td>Anonymized, 1 year</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Account Information</strong>
+                                    </td>
+                                    <td>Optional account features</td>
+                                    <td>Until account deletion</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Technical Data</strong></td>
+                                    <td>Service optimization</td>
+                                    <td>90 days</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Game Preferences</strong></td>
+                                    <td>Personalized recommendations</td>
+                                    <td>Local storage only</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="highlight-box">
+                            <strong>Important:</strong> We do not require
+                            personal information to play games. Most data
+                            collection is optional or anonymized.
                         </div>
-                        <p style="font-size: 14px; color: #88ffff; margin-top: 5px;">Helps us improve preservation efforts. Optional.</p>
-                        
-                        <div class="cookie-toggle">
-                            <span class="toggle-label">Preference Cookies</span>
-                            <div class="toggle-switch" id="preferenceToggle">
-                                <div></div>
+                    </div>
+                </div>
+
+                <!-- How We Use Information -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <span>🎯</span> How We Use Information
+                    </h2>
+                    <div class="section-content">
+                        <p>
+                            We use collected information for the following
+                            purposes:
+                        </p>
+                        <ul style="padding-left: 30px; margin: 15px 0">
+                            <li>
+                                <strong>Preservation Research:</strong>
+                                Understanding which games are most played to
+                                prioritize preservation efforts
+                            </li>
+                            <li>
+                                <strong>Service Improvement:</strong> Optimizing
+                                game loading and emulation performance
+                            </li>
+                            <li>
+                                <strong>Account Features:</strong> Enabling game
+                                progress saving and favorites
+                            </li>
+                            <li>
+                                <strong>Legal Compliance:</strong> Meeting our
+                                legal obligations
+                            </li>
+                            <li>
+                                <strong>Communication:</strong> Responding to
+                                user inquiries (if provided)
+                            </li>
+                        </ul>
+
+                        <p>
+                            We never sell your personal information to third
+                            parties.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Cookies and Tracking -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <span>🍪</span> Cookies and Tracking
+                    </h2>
+                    <div class="section-content">
+                        <p>
+                            We use minimal cookies for essential functionality:
+                        </p>
+
+                        <div class="cookie-preview">
+                            <h3
+                                style="
+                                    color: var(--cyber-blue);
+                                    margin-bottom: 15px;
+                                "
+                            >
+                                Cookie Preferences
+                            </h3>
+
+                            <div class="cookie-toggle">
+                                <span class="toggle-label"
+                                    >Essential Cookies</span
+                                >
+                                <div
+                                    class="toggle-switch"
+                                    style="background: rgba(0, 255, 255, 0.3)"
+                                >
+                                    <div
+                                        style="transform: translateX(30px)"
+                                    ></div>
+                                </div>
                             </div>
+                            <p
+                                style="
+                                    font-size: 14px;
+                                    color: #88ffff;
+                                    margin-top: 5px;
+                                "
+                            >
+                                Required for basic functionality. Cannot be
+                                disabled.
+                            </p>
+
+                            <div class="cookie-toggle">
+                                <span class="toggle-label"
+                                    >Analytics Cookies</span
+                                >
+                                <div class="toggle-switch" id="analyticsToggle">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <p
+                                style="
+                                    font-size: 14px;
+                                    color: #88ffff;
+                                    margin-top: 5px;
+                                "
+                            >
+                                Helps us improve preservation efforts. Optional.
+                            </p>
+
+                            <div class="cookie-toggle">
+                                <span class="toggle-label"
+                                    >Preference Cookies</span
+                                >
+                                <div
+                                    class="toggle-switch"
+                                    id="preferenceToggle"
+                                >
+                                    <div></div>
+                                </div>
+                            </div>
+                            <p
+                                style="
+                                    font-size: 14px;
+                                    color: #88ffff;
+                                    margin-top: 5px;
+                                "
+                            >
+                                Remembers your game settings. Optional.
+                            </p>
                         </div>
-                        <p style="font-size: 14px; color: #88ffff; margin-top: 5px;">Remembers your game settings. Optional.</p>
-                    </div>
-                    
-                    <p>You can control cookie preferences through your browser settings or our cookie consent banner.</p>
-                </div>
-            </div>
 
-            <!-- Data Sharing -->
-            <div class="section">
-                <h2 class="section-title">
-                    <span>🤝</span> Data Sharing
-                </h2>
-                <div class="section-content">
-                    <p>We share data only in these specific circumstances:</p>
-                    <ul style="padding-left: 30px; margin: 15px 0;">
-                        <li><strong>Legal Requirements:</strong> When required by law or to protect our rights</li>
-                        <li><strong>Service Providers:</strong> With trusted partners who assist our operations (under strict confidentiality)</li>
-                        <li><strong>Research Partners:</strong> Anonymized data for academic preservation research</li>
-                        <li><strong>Business Transfers:</strong> In connection with a merger or acquisition</li>
-                    </ul>
-                    
-                    <div class="highlight-box">
-                        <strong>No Commercial Sharing:</strong> We do not share personal data with advertisers or marketers.
+                        <p>
+                            You can control cookie preferences through your
+                            browser settings or our cookie consent banner.
+                        </p>
                     </div>
                 </div>
-            </div>
 
-            <!-- Data Security -->
-            <div class="section">
-                <h2 class="section-title">
-                    <span>🔒</span> Data Security
-                </h2>
-                <div class="section-content">
-                    <p>We implement appropriate technical and organizational measures to protect your information:</p>
-                    <ul style="padding-left: 30px; margin: 15px 0;">
-                        <li>Encryption of sensitive data in transit</li>
-                        <li>Regular security assessments</li>
-                        <li>Limited access to personal information</li>
-                        <li>Secure server infrastructure</li>
-                        <li>Regular software updates</li>
-                    </ul>
-                    
-                    <p>While we strive to protect your information, no method of transmission over the Internet is 100% secure.</p>
-                </div>
-            </div>
+                <!-- Data Sharing -->
+                <div class="section">
+                    <h2 class="section-title"><span>🤝</span> Data Sharing</h2>
+                    <div class="section-content">
+                        <p>
+                            We share data only in these specific circumstances:
+                        </p>
+                        <ul style="padding-left: 30px; margin: 15px 0">
+                            <li>
+                                <strong>Legal Requirements:</strong> When
+                                required by law or to protect our rights
+                            </li>
+                            <li>
+                                <strong>Service Providers:</strong> With trusted
+                                partners who assist our operations (under strict
+                                confidentiality)
+                            </li>
+                            <li>
+                                <strong>Research Partners:</strong> Anonymized
+                                data for academic preservation research
+                            </li>
+                            <li>
+                                <strong>Business Transfers:</strong> In
+                                connection with a merger or acquisition
+                            </li>
+                        </ul>
 
-            <!-- Children's Privacy -->
-            <div class="section">
-                <h2 class="section-title">
-                    <span>👶</span> Children's Privacy
-                </h2>
-                <div class="section-content">
-                    <div class="children-box">
-                        <strong>COPPA Compliance:</strong> ICEGames is committed to protecting children's privacy online.
+                        <div class="highlight-box">
+                            <strong>No Commercial Sharing:</strong> We do not
+                            share personal data with advertisers or marketers.
+                        </div>
                     </div>
-                    
-                    <p>Our service is designed for users of all ages, but we take special care with younger users:</p>
-                    <ul style="padding-left: 30px; margin: 15px 0;">
-                        <li>We do not knowingly collect personal information from children under 13</li>
-                        <li>Accounts for users under 13 require parental consent</li>
-                        <li>We do not display targeted advertising to children</li>
-                        <li>Parents can request deletion of their child's information</li>
-                    </ul>
-                    
-                    <p>If you believe we have collected information from a child under 13, please contact us immediately.</p>
                 </div>
-            </div>
 
-            <!-- Your Rights -->
-            <div class="section">
-                <h2 class="section-title">
-                    <span>👤</span> Your Rights
-                </h2>
-                <div class="section-content">
-                    <p>Depending on your location, you may have the following rights regarding your personal information:</p>
-                    
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Right</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Access</strong></td>
-                                <td>Request a copy of your personal data</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Rectification</strong></td>
-                                <td>Correct inaccurate personal data</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Erasure</strong></td>
-                                <td>Request deletion of your personal data</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Restriction</strong></td>
-                                <td>Limit processing of your personal data</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Portability</strong></td>
-                                <td>Receive your data in a structured format</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Objection</strong></td>
-                                <td>Object to processing of your personal data</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
-                    <p>To exercise these rights, please contact us using the information below.</p>
-                </div>
-            </div>
+                <!-- Data Security -->
+                <div class="section">
+                    <h2 class="section-title"><span>🔒</span> Data Security</h2>
+                    <div class="section-content">
+                        <p>
+                            We implement appropriate technical and
+                            organizational measures to protect your information:
+                        </p>
+                        <ul style="padding-left: 30px; margin: 15px 0">
+                            <li>Encryption of sensitive data in transit</li>
+                            <li>Regular security assessments</li>
+                            <li>Limited access to personal information</li>
+                            <li>Secure server infrastructure</li>
+                            <li>Regular software updates</li>
+                        </ul>
 
-            <!-- International Transfers -->
-            <div class="section">
-                <h2 class="section-title">
-                    <span>🌐</span> International Transfers
-                </h2>
-                <div class="section-content">
-                    <p>ICEGames operates globally as a digital preservation project. Your information may be transferred to and maintained on servers located outside of your country.</p>
-                    
-                    <p>We ensure appropriate safeguards are in place for international data transfers, including:</p>
-                    <ul style="padding-left: 30px; margin: 15px 0;">
-                        <li>Standard Contractual Clauses</li>
-                        <li>Adequacy decisions</li>
-                        <li>Other lawful transfer mechanisms</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Changes to Privacy Policy -->
-            <div class="section">
-                <h2 class="section-title">
-                    <span>📝</span> Changes to Privacy Policy
-                </h2>
-                <div class="section-content">
-                    <p>We may update this Privacy Policy from time to time. We will notify you of any changes by:</p>
-                    <ul style="padding-left: 30px; margin: 15px 0;">
-                        <li>Posting the new Privacy Policy on this page</li>
-                        <li>Updating the "Last Updated" date</li>
-                        <li>Providing in-service notification for significant changes</li>
-                    </ul>
-                    
-                    <p>You are advised to review this Privacy Policy periodically for any changes.</p>
-                </div>
-            </div>
-
-            <!-- Contact Us -->
-            <div class="section">
-                <h2 class="section-title">
-                    <span>📧</span> Contact Us
-                </h2>
-                <div class="section-content">
-                    <p>If you have questions about this Privacy Policy or wish to exercise your rights, please contact us:</p>
-                    
-                    <div class="highlight-box">
-                        <p><strong>Data Protection Officer:</strong> privacy@icegames.com</p>
-                        <p><strong>General Inquiries:</strong> <a href="contact.html" style="color: var(--cyber-blue);">Contact Form</a></p>
-                        <p><strong>EU Representative:</strong> eu-rep@icegames.com</p>
+                        <p>
+                            While we strive to protect your information, no
+                            method of transmission over the Internet is 100%
+                            secure.
+                        </p>
                     </div>
-                    
-                    <p>We aim to respond to all privacy-related inquiries within 30 days.</p>
                 </div>
+
+                <!-- Children's Privacy -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <span>👶</span> Children's Privacy
+                    </h2>
+                    <div class="section-content">
+                        <div class="children-box">
+                            <strong>COPPA Compliance:</strong> ICEGames is
+                            committed to protecting children's privacy online.
+                        </div>
+
+                        <p>
+                            Our service is designed for users of all ages, but
+                            we take special care with younger users:
+                        </p>
+                        <ul style="padding-left: 30px; margin: 15px 0">
+                            <li>
+                                We do not knowingly collect personal information
+                                from children under 13
+                            </li>
+                            <li>
+                                Accounts for users under 13 require parental
+                                consent
+                            </li>
+                            <li>
+                                We do not display targeted advertising to
+                                children
+                            </li>
+                            <li>
+                                Parents can request deletion of their child's
+                                information
+                            </li>
+                        </ul>
+
+                        <p>
+                            If you believe we have collected information from a
+                            child under 13, please contact us immediately.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Your Rights -->
+                <div class="section">
+                    <h2 class="section-title"><span>👤</span> Your Rights</h2>
+                    <div class="section-content">
+                        <p>
+                            Depending on your location, you may have the
+                            following rights regarding your personal
+                            information:
+                        </p>
+
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Right</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Access</strong></td>
+                                    <td>
+                                        Request a copy of your personal data
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Rectification</strong></td>
+                                    <td>Correct inaccurate personal data</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Erasure</strong></td>
+                                    <td>
+                                        Request deletion of your personal data
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Restriction</strong></td>
+                                    <td>
+                                        Limit processing of your personal data
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Portability</strong></td>
+                                    <td>
+                                        Receive your data in a structured format
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Objection</strong></td>
+                                    <td>
+                                        Object to processing of your personal
+                                        data
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p>
+                            To exercise these rights, please contact us using
+                            the information below.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- International Transfers -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <span>🌐</span> International Transfers
+                    </h2>
+                    <div class="section-content">
+                        <p>
+                            ICEGames operates globally as a digital preservation
+                            project. Your information may be transferred to and
+                            maintained on servers located outside of your
+                            country.
+                        </p>
+
+                        <p>
+                            We ensure appropriate safeguards are in place for
+                            international data transfers, including:
+                        </p>
+                        <ul style="padding-left: 30px; margin: 15px 0">
+                            <li>Standard Contractual Clauses</li>
+                            <li>Adequacy decisions</li>
+                            <li>Other lawful transfer mechanisms</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Changes to Privacy Policy -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <span>📝</span> Changes to Privacy Policy
+                    </h2>
+                    <div class="section-content">
+                        <p>
+                            We may update this Privacy Policy from time to time.
+                            We will notify you of any changes by:
+                        </p>
+                        <ul style="padding-left: 30px; margin: 15px 0">
+                            <li>Posting the new Privacy Policy on this page</li>
+                            <li>Updating the "Last Updated" date</li>
+                            <li>
+                                Providing in-service notification for
+                                significant changes
+                            </li>
+                        </ul>
+
+                        <p>
+                            You are advised to review this Privacy Policy
+                            periodically for any changes.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Contact Us -->
+                <div class="section">
+                    <h2 class="section-title"><span>📧</span> Contact Us</h2>
+                    <div class="section-content">
+                        <p>
+                            If you have questions about this Privacy Policy or
+                            wish to exercise your rights, please contact us:
+                        </p>
+
+                        <div class="highlight-box">
+                            <p>
+                                <strong>Data Protection Officer:</strong>
+                                privacy@icegames.com
+                            </p>
+                            <p>
+                                <strong>General Inquiries:</strong>
+                                <a
+                                    href="contact.html"
+                                    style="color: var(--cyber-blue)"
+                                    >Contact Form</a
+                                >
+                            </p>
+                            <p>
+                                <strong>EU Representative:</strong>
+                                eu-rep@icegames.com
+                            </p>
+                        </div>
+
+                        <p>
+                            We aim to respond to all privacy-related inquiries
+                            within 30 days.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Last Updated -->
+            <div class="last-updated">
+                <p>This Privacy Policy was last updated on January 1, 2025.</p>
             </div>
         </div>
 
-        <!-- Last Updated -->
-        <div class="last-updated">
-            <p>This Privacy Policy was last updated on January 1, 2025.</p>
-        </div>
-    </div>
+        <!-- Footer -->
+        <footer class="page-footer">
+            <p class="footer-text">
+                © 2025 ICEGames GameStation - Digital Preservation Project
+            </p>
+            <p class="footer-text">
+                <a href="terms.html" style="color: #88ffff; margin: 0 10px"
+                    >Terms of Service</a
+                >
+                |
+                <a
+                    href="privacy.html"
+                    style="color: var(--cyber-blue); margin: 0 10px"
+                    >Privacy Policy</a
+                >
+                |
+                <a href="contact.html" style="color: #88ffff; margin: 0 10px"
+                    >Contact Us</a
+                >
+            </p>
+        </footer>
 
-    <!-- Footer -->
-    <footer class="page-footer">
-        <p class="footer-text">© 2025 ICEGames GameStation - Digital Preservation Project</p>
-        <p class="footer-text">
-            <a href="terms.html" style="color: #88ffff; margin: 0 10px;">Terms of Service</a> | 
-            <a href="privacy.html" style="color: var(--cyber-blue); margin: 0 10px;">Privacy Policy</a> | 
-            <a href="contact.html" style="color: #88ffff; margin: 0 10px;">Contact Us</a>
-        </p>
-    </footer>
+        <script>
+            // Cookie toggle functionality
+            const analyticsToggle = document.getElementById("analyticsToggle");
+            const preferenceToggle =
+                document.getElementById("preferenceToggle");
 
-    <script>
-        // Cookie toggle functionality
-        const analyticsToggle = document.getElementById('analyticsToggle');
-        const preferenceToggle = document.getElementById('preferenceToggle');
-        
-        analyticsToggle.addEventListener('click', function() {
-            const isActive = this.style.backgroundColor === 'rgba(0, 255, 255, 0.3)';
-            this.style.backgroundColor = isActive ? 'rgba(0, 255, 255, 0.2)' : 'rgba(0, 255, 255, 0.3)';
-            this.querySelector('div').style.transform = isActive ? 'translateX(0)' : 'translateX(30px)';
-            
-            // In a real implementation, this would save the preference
-            localStorage.setItem('analyticsCookies', !isActive);
-        });
-        
-        preferenceToggle.addEventListener('click', function() {
-            const isActive = this.style.backgroundColor === 'rgba(0, 255, 255, 0.3)';
-            this.style.backgroundColor = isActive ? 'rgba(0, 255, 255, 0.2)' : 'rgba(0, 255, 255, 0.3)';
-            this.querySelector('div').style.transform = isActive ? 'translateX(0)' : 'translateX(30px)';
-            
-            // In a real implementation, this would save the preference
-            localStorage.setItem('preferenceCookies', !isActive);
-        });
-        
-        // Load saved preferences
-        document.addEventListener('DOMContentLoaded', function() {
-            const analyticsEnabled = localStorage.getItem('analyticsCookies') !== 'false';
-            const preferencesEnabled = localStorage.getItem('preferenceCookies') !== 'false';
-            
-            if (analyticsEnabled) {
-                analyticsToggle.style.backgroundColor = 'rgba(0, 255, 255, 0.3)';
-                analyticsToggle.querySelector('div').style.transform = 'translateX(30px)';
-            }
-            
-            if (preferencesEnabled) {
-                preferenceToggle.style.backgroundColor = 'rgba(0, 255, 255, 0.3)';
-                preferenceToggle.querySelector('div').style.transform = 'translateX(30px)';
-            }
-        });
-    </script>
-</body>
+            analyticsToggle.addEventListener("click", function () {
+                const isActive =
+                    this.style.backgroundColor === "rgba(0, 255, 255, 0.3)";
+                this.style.backgroundColor = isActive
+                    ? "rgba(0, 255, 255, 0.2)"
+                    : "rgba(0, 255, 255, 0.3)";
+                this.querySelector("div").style.transform = isActive
+                    ? "translateX(0)"
+                    : "translateX(30px)";
+
+                // In a real implementation, this would save the preference
+                localStorage.setItem("analyticsCookies", !isActive);
+            });
+
+            preferenceToggle.addEventListener("click", function () {
+                const isActive =
+                    this.style.backgroundColor === "rgba(0, 255, 255, 0.3)";
+                this.style.backgroundColor = isActive
+                    ? "rgba(0, 255, 255, 0.2)"
+                    : "rgba(0, 255, 255, 0.3)";
+                this.querySelector("div").style.transform = isActive
+                    ? "translateX(0)"
+                    : "translateX(30px)";
+
+                // In a real implementation, this would save the preference
+                localStorage.setItem("preferenceCookies", !isActive);
+            });
+
+            // Load saved preferences
+            document.addEventListener("DOMContentLoaded", function () {
+                const analyticsEnabled =
+                    localStorage.getItem("analyticsCookies") !== "false";
+                const preferencesEnabled =
+                    localStorage.getItem("preferenceCookies") !== "false";
+
+                if (analyticsEnabled) {
+                    analyticsToggle.style.backgroundColor =
+                        "rgba(0, 255, 255, 0.3)";
+                    analyticsToggle.querySelector("div").style.transform =
+                        "translateX(30px)";
+                }
+
+                if (preferencesEnabled) {
+                    preferenceToggle.style.backgroundColor =
+                        "rgba(0, 255, 255, 0.3)";
+                    preferenceToggle.querySelector("div").style.transform =
+                        "translateX(30px)";
+                }
+            });
+        </script>
+    </body>
 </html>

@@ -1,10 +1,317 @@
 <!doctype html>
-<html>
+<html lang="en">
     <head>
-        <title>Action Game</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Game Player | ICEGames</title>
         <script src="../ruffle/ruffle.js"></script>
+
+        <style>
+            :root {
+                --cyber-blue: #00ffff;
+                --deep-blue: #001122;
+                --ice-gradient: linear-gradient(
+                    135deg,
+                    #00ffff,
+                    #00ccff,
+                    #0099ff
+                );
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: Arial, sans-serif;
+                background: #000;
+                color: white;
+                min-height: 100vh;
+                overflow-x: hidden;
+            }
+
+            .game-background {
+                position: fixed;
+                inset: 0;
+                z-index: -1;
+                background: linear-gradient(
+                    45deg,
+                    #000810,
+                    #001122,
+                    #002244,
+                    #003366,
+                    #004488
+                );
+                background-size: 400% 400%;
+                animation: bgMove 20s ease infinite;
+            }
+
+            @keyframes bgMove {
+                0% {
+                    background-position: 0% 0%;
+                }
+                50% {
+                    background-position: 100% 100%;
+                }
+                100% {
+                    background-position: 0% 0%;
+                }
+            }
+
+            .ice-particle {
+                position: fixed;
+                background: var(--cyber-blue);
+                border-radius: 50%;
+                pointer-events: none;
+                opacity: 0.5;
+                z-index: -1;
+                animation: float linear infinite;
+            }
+
+            @keyframes float {
+                from {
+                    transform: translateY(110vh);
+                }
+                to {
+                    transform: translateY(-10vh);
+                }
+            }
+
+            /* HEADER */
+            .game-header {
+                background: rgba(0, 20, 40, 0.9);
+                padding: 20px 40px;
+                border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+                box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+            }
+
+            .header-content {
+                max-width: 1200px;
+                margin: auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .game-title {
+                font-size: 28px;
+                font-weight: bold;
+                background: var(--ice-gradient);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .back-link {
+                color: var(--cyber-blue);
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+            /* GAME CONTAINER */
+            .game-container {
+                max-width: 1100px;
+                margin: 40px auto;
+                padding: 0 20px;
+            }
+
+            .game-wrapper {
+                background: rgba(0, 20, 40, 0.7);
+                border-radius: 20px;
+                padding: 30px;
+                border: 2px solid rgba(0, 255, 255, 0.2);
+                box-shadow: 0 0 50px rgba(0, 255, 255, 0.3);
+            }
+
+            .game-frame-container {
+                max-width: 900px;
+                margin: auto;
+                background: #000;
+                border-radius: 12px;
+                overflow: hidden;
+                border: 3px solid rgba(0, 255, 255, 0.5);
+            }
+
+            .game-frame {
+                width: 100%;
+                height: 600px;
+                border: none;
+                background: #000;
+                display: block;
+            }
+
+            .game-info {
+                margin-top: 30px;
+                padding: 25px;
+                background: rgba(0, 30, 50, 0.5);
+                border-radius: 15px;
+                border: 1px solid rgba(0, 255, 255, 0.2);
+            }
+
+            .loading-overlay {
+                position: fixed;
+                inset: 0;
+                background: #000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+            }
+
+            .loader {
+                width: 70px;
+                height: 70px;
+                border: 5px solid rgba(0, 255, 255, 0.1);
+                border-top: 5px solid var(--cyber-blue);
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+            }
+
+            @keyframes spin {
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            @media (max-width: 768px) {
+                .game-frame {
+                    height: 400px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .game-frame {
+                    height: 300px;
+                }
+            }
+        </style>
     </head>
+
     <body>
-        <embed src="../gamess/Papas Freezeria.swf" width="800" height="600" />
+        <div class="game-background"></div>
+        <div id="iceParticles"></div>
+
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loader"></div>
+        </div>
+
+        <header class="game-header">
+            <div class="header-content">
+                <div class="game-title">🎮 ICE GAMES</div>
+                <a href="../index.html" class="back-link">← Back to Games</a>
+            </div>
+        </header>
+
+        <main class="game-container">
+            <div class="game-wrapper">
+                <div class="game-frame-container">
+                    <embed src="../gamess/Papas Freezeria.swf" class="game-frame" />
+                </div>
+            </div>
+
+            <div class="game-info">
+                <h2 style="color: var(--cyber-blue); margin-bottom: 15px">
+                    Game Information
+                </h2>
+                <p>Enjoy this classic Flash game preserved using Ruffle.</p>
+            </div>
+
+            <div style="margin-top: 30px">
+                <h3 style="color: var(--cyber-blue); margin-bottom: 15px">
+                    🎯 You Might Also Like
+                </h3>
+                <div
+                    style="
+                        display: flex;
+                        gap: 15px;
+                        overflow-x: auto;
+                        padding: 10px 0;
+                    "
+                >
+                    <a
+                        href="sonic.html"
+                        style="
+                            color: #88ffff;
+                            text-decoration: none;
+                            min-width: 150px;
+                            background: rgba(0, 255, 255, 0.1);
+                            padding: 10px;
+                            border-radius: 10px;
+                            border: 1px solid rgba(0, 255, 255, 0.2);
+                        "
+                    >
+                        Sonic Adventure
+                    </a>
+                    <a
+                        href="crash.html"
+                        style="
+                            color: #88ffff;
+                            text-decoration: none;
+                            min-width: 150px;
+                            background: rgba(0, 255, 255, 0.1);
+                            padding: 10px;
+                            border-radius: 10px;
+                            border: 1px solid rgba(0, 255, 255, 0.2);
+                        "
+                    >
+                        Crash Bandicoot
+                    </a>
+                    <a
+                        href="pacman.html"
+                        style="
+                            color: #88ffff;
+                            text-decoration: none;
+                            min-width: 150px;
+                            background: rgba(0, 255, 255, 0.1);
+                            padding: 10px;
+                            border-radius: 10px;
+                            border: 1px solid rgba(0, 255, 255, 0.2);
+                        "
+                    >
+                        pacman
+                    </a>
+                    <a
+                        href="mai (2).html"
+                        style="
+                            color: #88ffff;
+                            text-decoration: none;
+                            min-width: 150px;
+                            background: rgba(0, 255, 255, 0.1);
+                            padding: 10px;
+                            border-radius: 10px;
+                            border: 1px solid rgba(0, 255, 255, 0.2);
+                        "
+                    >
+                        mario
+                    </a>
+                </div>
+            </div>
+        </div>
+        </main>
+
+        <script>
+            // Ice particles
+            const particleContainer = document.getElementById("iceParticles");
+            for (let i = 0; i < 30; i++) {
+                const p = document.createElement("div");
+                p.className = "ice-particle";
+                const size = Math.random() * 5 + 2;
+                p.style.width = p.style.height = size + "px";
+                p.style.left = Math.random() * 100 + "vw";
+                p.style.animationDuration = 6 + Math.random() * 12 + "s";
+                particleContainer.appendChild(p);
+            }
+
+            // Hide loading
+            window.addEventListener("load", () => {
+                setTimeout(() => {
+                    document.getElementById("loadingOverlay").style.display =
+                        "none";
+                }, 1200);
+            });
+        </script>
     </body>
 </html>

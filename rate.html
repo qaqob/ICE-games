@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Us | ICEGames GameStation</title>
+    <style>
+        :root {
+            --cyber-blue: #00ffff;
+            --deep-blue: #001122;
+            --neon-glow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+            --ice-gradient: linear-gradient(135deg, #00ffff, #00ccff, #0099ff);
+            --star-gold: #ffd700;
+            --star-silver: #c0c0c0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000;
+            color: white;
+            min-height: 100vh;
+            background: linear-gradient(45deg, 
+                #000810 0%,
+                #001122 25%,
+                #002244 50%,
+                #003366 75%,
+                #004488 100%);
+            background-size: 400% 400%;
+            animation: backgroundShift 20s ease infinite;
+        }
+
+        @keyframes backgroundShift {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        /* Navigation */
+        .nav-container {
+            background: rgba(0, 20, 40, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 40px;
+            border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: var(--ice-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #88ffff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(0, 255, 255, 0.1);
+            color: white;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Hero Section */
+        .rate-hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(rgba(0, 20, 40, 0.9), rgba(0, 40, 60, 0.8));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-size: 64px;
+            background: var(--ice-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 0 0 30px rgba(0, 255, 255, 0.5); }
+            50% { text-shadow: 0 0 50px rgba(0, 255, 255, 0.8); }
+        }
+
+        .hero-subtitle {
+            font-size: 22px;
+            color: #88ffff;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .rate-badges {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .rate-badge {
+            background: rgba(0, 255, 255, 0.1);
+            padding: 12px 24px;
+            border-radius: 25px;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            color: #88ffff;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Rating Container */
+        .rating-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Overall Rating */
+        .overall-rating {
+            background: rgba(0, 30, 50, 0.7);
+            border-radius: 20px;
+            padding: 50px;
+            margin: 40px 0;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .overall-rating::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--ice-gradient);
+        }
+
+        .rating-score {
+            font-size: 96px;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--star-gold), #ffaa00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 20px 0;
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
+            animation: pulseScore 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseScore {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .rating-stars {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin: 20px 0;
+        }
+
+        .rating-star {
+            font-size: 48px;
+            color: var(--star-gold);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .rating-star:hover {
+            transform: scale(1.2) rotate(15deg);
+        }
+
+        .rating-count {
+            color: #88ffff;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        /* Rating Form */
+        .rating-form {
+            background: rgba(0, 30, 50, 0.7);
+            border-radius: 20px;
+            padding: 50px;
+            margin: 40px 0;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .form-title {
+            font-size: 36px;
+            color: var(--cyber-blue);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Star Rating Input */
+        .star-rating {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        .star-input {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .star-input input {
+            display: none;
+        }
+
+        .star-input label {
+            font-size: 48px;
+            color: var(--star-silver);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 10px currentColor;
+        }
+
+        .star-input label:hover,
+        .star-input label:hover ~ label,
+        .star-input input:checked ~ label {
+            color: var(--star-gold);
+            transform: scale(1.1);
+        }
+
+        .star-label {
+            color: #88ffff;
+            margin-top: 10px;
+            font-size: 18px;
+            min-height: 24px;
+        }
+
+        /* Rating Categories */
+        .rating-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .category-card {
+            background: rgba(0, 40, 60, 0.5);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--cyber-blue);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+        }
+
+        .category-title {
+            font-size: 22px;
+            color: var(--cyber-blue);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-rating {
+            display: flex;
+            gap: 5px;
+            margin: 15px 0;
+        }
+
+        .category-star {
+            font-size: 24px;
+            color: var(--star-silver);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .category-star.active {
+            color: var(--star-gold);
+        }
+
+        /* Review Form */
+        .review-form {
+            background: rgba(0, 40, 60, 0.4);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            color: #88ffff;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(0, 20, 40, 0.6);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--cyber-blue);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            background: rgba(0, 30, 50, 0.8);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            background: var(--ice-gradient);
+            border: none;
+            border-radius: 15px;
+            color: #001122;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 40px 0;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 255, 255, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Recent Reviews */
+        .reviews-section {
+            background: rgba(0, 30, 50, 0.7);
+            border-radius: 20px;
+            padding: 50px;
+            margin: 40px 0;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .review-card {
+            background: rgba(0, 40, 60, 0.5);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid var(--cyber-blue);
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .reviewer-name {
+            color: var(--cyber-blue);
+            font-weight: bold;
+        }
+
+        .review-date {
+            color: #88ffff;
+            font-size: 14px;
+        }
+
+        .review-stars {
+            color: var(--star-gold);
+            margin: 10px 0;
+        }
+
+        .review-text {
+            color: #b3ffff;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        /* Platform Ratings */
+        .platform-ratings {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .platform-card {
+            background: rgba(0, 40, 60, 0.5);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--cyber-blue);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
+        }
+
+        .platform-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: var(--cyber-blue);
+        }
+
+        .platform-score {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--star-gold);
+            margin: 10px 0;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: rgba(0, 255, 136, 0.1);
+            border: 2px solid #00ff88;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin: 40px 0;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer */
+        .page-footer {
+            margin-top: 80px;
+            padding: 40px 20px;
+            background: rgba(0, 20, 40, 0.8);
+            border-top: 2px solid rgba(0, 255, 255, 0.3);
+            text-align: center;
+        }
+
+        .footer-text {
+            color: #88ffff;
+            margin: 10px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 15px 20px;
+            }
+            
+            .nav-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .rating-score {
+                font-size: 64px;
+            }
+            
+            .rating-form,
+            .overall-rating,
+            .reviews-section {
+                padding: 30px 20px;
+            }
+            
+            .rating-categories {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-content">
+            <a href="index.html" class="logo">ICEGAMES</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="submit.html">Submit Game</a>
+                <a href="rate.html" style="color: var(--cyber-blue); font-weight: bold;">Rate Us</a>
+                <a href="support.html">Support</a>
+                <a href="terms.html">Terms</a>
+                <a href="privacy.html">Privacy</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="rate-hero">
+        <h1 class="hero-title">Rate ICEGames</h1>
+        <p class="hero-subtitle">
+            Your feedback helps us improve and continue preserving Flash games. 
+            Share your experience and help other gamers discover our preservation project.
+        </p>
+        
+        <div class="rate-badges">
+            <div class="rate-badge">⭐ Share Feedback</div>
+            <div class="rate-badge">🎮 Help Gamers</div>
+            <div class="rate-badge">📈 Improve Service</div>
+            <div class="rate-badge">🏆 Earn Badges</div>
+        </div>
+    </section>
+
+    <!-- Rating Container -->
+    <div class="rating-container">
+        <!-- Overall Rating -->
+        <div class="overall-rating">
+            <h2 style="color: var(--cyber-blue); margin-bottom: 20px;">Overall Rating</h2>
+            <div class="rating-score" id="overallScore">4.8</div>
+            <div class="rating-stars">
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+            </div>
+            <div class="rating-count" id="reviewCount">Based on 24,589 reviews</div>
+            
+            <div style="margin-top: 30px;">
+                <div style="display: flex; align-items: center; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <div style="color: #88ffff;">⭐⭐⭐⭐⭐ 84%</div>
+                    <div style="width: 200px; height: 8px; background: rgba(0, 255, 255, 0.2); border-radius: 4px; overflow: hidden;">
+                        <div style="width: 84%; height: 100%; background: var(--star-gold);"></div>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 10px;">
+                    <div style="color: #88ffff;">⭐⭐⭐⭐ 12%</div>
+                    <div style="width: 200px; height: 8px; background: rgba(0, 255, 255, 0.2); border-radius: 4px; overflow: hidden;">
+                        <div style="width: 12%; height: 100%; background: var(--star-gold);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rating Form -->
+        <div class="rating-form">
+            <h2 class="form-title">Share Your Experience</h2>
+            
+            <!-- Star Rating -->
+            <div class="star-rating">
+                <h3 style="color: #88ffff; margin-bottom: 20px;">Overall Rating</h3>
+                <div class="star-input" id="starInput">
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label for="star5" title="5 stars">★</label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4" title="4 stars">★</label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3" title="3 stars">★</label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2" title="2 stars">★</label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1" title="1 star">★</label>
+                </div>
+                <div class="star-label" id="starLabel">Tap to rate</div>
+            </div>
+
+            <!-- Rating Categories -->
+            <div class="rating-categories">
+                <div class="category-card">
+                    <h3 class="category-title">🎮 Game Selection</h3>
+                    <p style="color: #b3ffff; margin-bottom: 15px;">How's our game library?</p>
+                    <div class="category-rating" data-category="selection">
+                        <span class="category-star" data-value="1">★</span>
+                        <span class="category-star" data-value="2">★</span>
+                        <span class="category-star" data-value="3">★</span>
+                        <span class="category-star" data-value="4">★</span>
+                        <span class="category-star" data-value="5">★</span>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <h3 class="category-title">⚡ Performance</h3>
+                    <p style="color: #b3ffff; margin-bottom: 15px;">How well do games run?</p>
+                    <div class="category-rating" data-category="performance">
+                        <span class="category-star" data-value="1">★</span>
+                        <span class="category-star" data-value="2">★</span>
+                        <span class="category-star" data-value="3">★</span>
+                        <span class="category-star" data-value="4">★</span>
+                        <span class="category-star" data-value="5">★</span>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <h3 class="category-title">🎨 User Interface</h3>
+                    <p style="color: #b3ffff; margin-bottom: 15px;">How's the site design?</p>
+                    <div class="category-rating" data-category="ui">
+                        <span class="category-star" data-value="1">★</span>
+                        <span class="category-star" data-value="2">★</span>
+                        <span class="category-star" data-value="3">★</span>
+                        <span class="category-star" data-value="4">★</span>
+                        <span class="category-star" data-value="5">★</span>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <h3 class="category-title">💾 Preservation</h3>
+                    <p style="color: #b3ffff; margin-bottom: 15px;">Value of game preservation?</p>
+                    <div class="category-rating" data-category="preservation">
+                        <span class="category-star" data-value="1">★</span>
+                        <span class="category-star" data-value="2">★</span>
+                        <span class="category-star" data-value="3">★</span>
+                        <span class="category-star" data-value="4">★</span>
+                        <span class="category-star" data-value="5">★</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review Form -->
+            <div class="review-form">
+                <div class="form-group">
+                    <label class="form-label">Your Name (optional)</label>
+                    <input type="text" class="form-input" id="reviewerName" placeholder="Anonymous Gamer">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Review Title</label>
+                    <input type="text" class="form-input" id="reviewTitle" placeholder="What's your review about?">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Your Review *</label>
+                    <textarea class="form-textarea" id="reviewText" placeholder="Share your experience with ICEGames..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Email (optional - for updates)</label>
+                    <input type="email" class="form-input" id="reviewerEmail" placeholder="email@example.com">
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button id="submitReview" class="submit-btn" disabled>
+                ⭐ Submit Review
+            </button>
+
+            <!-- Success Message -->
+            <div id="successMessage" class="success-message">
+                <div style="font-size: 64px; color: var(--star-gold); margin-bottom: 20px;">🎉</div>
+                <h2 style="color: var(--star-gold); margin-bottom: 20px;">Thank You for Your Review!</h2>
+                <p style="color: #b3ffff; margin-bottom: 20px;">
+                    Your feedback has been submitted and helps us improve ICEGames.
+                    You've earned the "Review Contributor" badge! 🏆
+                </p>
+                <button id="submitAnother" class="submit-btn" style="max-width: 300px; margin: 20px auto;">
+                    Submit Another Review
+                </button>
+            </div>
+        </div>
+
+        <!-- Platform Ratings -->
+        <div class="reviews-section">
+            <h2 style="color: var(--cyber-blue); margin-bottom: 30px; text-align: center;">Platform Ratings</h2>
+            
+            <div class="platform-ratings">
+                <div class="platform-card">
+                    <div class="platform-icon">📱</div>
+                    <h3>Mobile App</h3>
+                    <div class="platform-score">4.6</div>
+                    <div style="color: #88ffff; font-size: 14px;">1,245 reviews</div>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-icon">💻</div>
+                    <h3>Desktop</h3>
+                    <div class="platform-score">4.9</div>
+                    <div style="color: #88ffff; font-size: 14px;">18,432 reviews</div>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-icon">🛋️</div>
+                    <h3>TV App</h3>
+                    <div class="platform-score">4.3</div>
+                    <div style="color: #88ffff; font-size: 14px;">342 reviews</div>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-icon">🎮</div>
+                    <h3>Game Console</h3>
+                    <div class="platform-score">4.7</div>
+                    <div style="color: #88ffff; font-size: 14px;">892 reviews</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Reviews -->
+        <div class="reviews-section">
+            <h2 style="color: var(--cyber-blue); margin-bottom: 30px; text-align: center;">Recent Reviews</h2>
+            
+            <div class="reviews-grid" id="reviewsGrid">
+                <!-- Reviews will be loaded here -->
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <button id="loadMoreReviews" class="submit-btn" style="max-width: 300px;">
+                    📜 Load More Reviews
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <p class="footer-text">© 2025 ICEGames GameStation - Digital Preservation Project</p>
+        <p class="footer-text">Your feedback helps preserve gaming history</p>
+        <p class="footer-text">
+            Review Guidelines | Community Standards | Contact: feedback@icegames.com
+        </p>
+    </footer>
+
+    <script>
+        // Rating System
+        const starInput = document.getElementById('starInput');
+        const starLabel = document.getElementById('starLabel');
+        const categoryRatings = document.querySelectorAll('.category-rating');
+        const submitReview = document.getElementById('submitReview');
+        const successMessage = document.getElementById('successMessage');
+        const submitAnother = document.getElementById('submitAnother');
+        const reviewsGrid = document.getElementById('reviewsGrid');
+        const loadMoreBtn = document.getElementById('loadMoreReviews');
+        
+        let overallRating = 0;
+        const categoryScores = {
+            selection: 0,
+            performance: 0,
+            ui: 0,
+            preservation: 0
+        };
+        
+        // Star rating labels
+        const ratingLabels = {
+            1: "Poor - Needs improvement",
+            2: "Fair - Below average",
+            3: "Good - Meets expectations",
+            4: "Very Good - Above average",
+            5: "Excellent - Outstanding"
+        };
+        
+        // Overall star rating
+        starInput.addEventListener('change', function(e) {
+            overallRating = parseInt(e.target.value);
+            starLabel.textContent = ratingLabels[overallRating];
+            starLabel.style.color = 'var(--star-gold)';
+            validateForm();
+        });
+        
+        // Category star ratings
+        categoryRatings.forEach(category => {
+            const stars = category.querySelectorAll('.category-star');
+            const categoryName = category.dataset.category;
+            
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const value = parseInt(this.dataset.value);
+                    categoryScores[categoryName] = value;
+                    
+                    // Update star display
+                    stars.forEach((s, index) => {
+                        if (index < value) {
+                            s.classList.add('active');
+                            s.style.color = 'var(--star-gold)';
+                        } else {
+                            s.classList.remove('active');
+                            s.style.color = 'var(--star-silver)';
+                        }
+                    });
+                    
+                    validateForm();
+                });
+            });
+        });
+        
+        // Form validation
+        function validateForm() {
+            const reviewText = document.getElementById('reviewText').value.trim();
+            const hasOverallRating = overallRating > 0;
+            const hasReviewText = reviewText.length >= 10;
+            
+            // Check if at least one category is rated
+            const hasCategoryRatings = Object.values(categoryScores).some(score => score > 0);
+            
+            submitReview.disabled = !(hasOverallRating && hasReviewText && hasCategoryRatings);
+            
+            return !submitReview.disabled;
+        }
+        
+        // Submit review
+        submitReview.addEventListener('click', function() {
+            if (!validateForm()) {
+                alert('Please provide an overall rating, rate at least one category, and write a review (minimum 10 characters).');
+                return;
+            }
+            
+            // Show loading state
+            this.innerHTML = '⏳ Submitting...';
+            this.disabled = true;
+            
+            // Get form data
+            const reviewData = {
+                overallRating: overallRating,
+                categoryScores: { ...categoryScores },
+                reviewerName: document.getElementById('reviewerName').value || 'Anonymous',
+                reviewTitle: document.getElementById('reviewTitle').value || 'Great Experience',
+                reviewText: document.getElementById('reviewText').value,
+                reviewerEmail: document.getElementById('reviewerEmail').value || '',
+                date: new Date().toISOString()
+            };
+            
+            // Simulate submission
+            setTimeout(() => {
+                // Save to localStorage
+                const reviews = JSON.parse(localStorage.getItem('icegamesReviews') || '[]');
+                reviews.unshift(reviewData);
+                localStorage.setItem('icegamesReviews', JSON.stringify(reviews));
+                
+                // Update overall rating
+                updateOverallRating();
+                
+                // Show success message
+                successMessage.style.display = 'block';
+                this.innerHTML = '✅ Submitted!';
+                
+                // Add new review to grid
+                addReviewToGrid(reviewData);
+            }, 1500);
+        });
+        
+        // Update overall rating display
+        function updateOverallRating() {
+            const reviews = JSON.parse(localStorage.getItem('icegamesReviews') || '[]');
+            if (reviews.length > 0) {
+                const totalRating = reviews.reduce((sum, review) => sum + review.overallRating, 0);
+                const avgRating = (totalRating / reviews.length).toFixed(1);
+                document.getElementById('overallScore').textContent = avgRating;
+                document.getElementById('reviewCount').textContent = `Based on ${reviews.length + 24589} reviews`;
+            }
+        }
+        
+        // Add review to grid
+        function addReviewToGrid(reviewData) {
+            const reviewCard = document.createElement('div');
+            reviewCard.className = 'review-card';
+            reviewCard.innerHTML = `
+                <div class="review-header">
+                    <div class="reviewer-name">${reviewData.reviewerName}</div>
+                    <div class="review-date">${new Date().toLocaleDateString()}</div>
+                </div>
+                <div class="review-stars">
+                    ${'★'.repeat(reviewData.overallRating)}${'☆'.repeat(5 - reviewData.overallRating)}
+                </div>
+                ${reviewData.reviewTitle ? `<h4 style="color: var(--cyber-blue); margin: 10px 0;">${reviewData.reviewTitle}</h4>` : ''}
+                <p class="review-text">${reviewData.reviewText}</p>
+            `;
+            
+            reviewsGrid.insertBefore(reviewCard, reviewsGrid.firstChild);
+        }
+        
+        // Load sample reviews
+        function loadSampleReviews() {
+            const sampleReviews = [
+                {
+                    reviewerName: "FlashFan92",
+                    date: "2025-01-10",
+                    overallRating: 5,
+                    reviewTitle: "Nostalgia at its best!",
+                    reviewText: "ICEGames brought back so many memories. The preservation work is incredible!"
+                },
+                {
+                    reviewerName: "RetroGamer",
+                    date: "2025-01-08",
+                    overallRating: 4,
+                    reviewTitle: "Great selection",
+                    reviewText: "Found games I thought were lost forever. Performance is good on most games."
+                },
+                {
+                    reviewerName: "HistoryBuff",
+                    date: "2025-01-05",
+                    overallRating: 5,
+                    reviewTitle: "Important work",
+                    reviewText: "This is more than gaming - it's digital archaeology. Keep up the great work!"
+                },
+                {
+                    reviewerName: "CasualPlayer",
+                    date: "2025-01-03",
+                    overallRating: 4,
+                    reviewTitle: "Easy to use",
+                    reviewText: "Site is clean and games load quickly. Wish there were more multiplayer games."
+                }
+            ];
+            
+            sampleReviews.forEach(review => {
+                addReviewToGrid(review);
+            });
+        }
+        
+        // Load more reviews
+        let loadedReviews = 0;
+        loadMoreBtn.addEventListener('click', function() {
+            // Simulate loading more reviews
+            const moreReviews = [
+                {
+                    reviewerName: "GameDevPro",
+                    date: "2025-01-02",
+                    overallRating: 5,
+                    reviewTitle: "Developer perspective",
+                    reviewText: "As a former Flash developer, I'm thrilled to see our work preserved."
+                },
+                {
+                    reviewerName: "WeekendWarrior",
+                    date: "2024-12-28",
+                    overallRating: 4,
+                    reviewTitle: "Perfect for weekends",
+                    reviewText: "Great way to spend a rainy afternoon. Game controls work well."
+                }
+            ];
+            
+            moreReviews.forEach(review => {
+                if (loadedReviews < 10) {
+                    addReviewToGrid(review);
+                    loadedReviews++;
+                }
+            });
+            
+            if (loadedReviews >= 10) {
+                this.disabled = true;
+                this.innerHTML = '📚 All reviews loaded';
+            }
+        });
+        
+        // Submit another review
+        submitAnother.addEventListener('click', function() {
+            successMessage.style.display = 'none';
+            submitReview.innerHTML = '⭐ Submit Review';
+            submitReview.disabled = true;
+            
+            // Reset form
+            document.getElementById('reviewerName').value = '';
+            document.getElementById('reviewTitle').value = '';
+            document.getElementById('reviewText').value = '';
+            document.getElementById('reviewerEmail').value = '';
+            
+            // Reset ratings
+            overallRating = 0;
+            Object.keys(categoryScores).forEach(key => categoryScores[key] = 0);
+            
+            // Reset star display
+            starLabel.textContent = 'Tap to rate';
+            starLabel.style.color = '#88ffff';
+            document.querySelectorAll('input[name="rating"]').forEach(input => input.checked = false);
+            document.querySelectorAll('.category-star').forEach(star => {
+                star.classList.remove('active');
+                star.style.color = 'var(--star-silver)';
+            });
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSampleReviews();
+            updateOverallRating();
+            validateForm();
+            
+            // Load user reviews from localStorage
+            const userReviews = JSON.parse(localStorage.getItem('icegamesReviews') || '[]');
+            userReviews.forEach(review => addReviewToGrid(review));
+            
+            // Add input validation
+            document.getElementById('reviewText').addEventListener('input', validateForm);
+        });
+        
+        // Add animation to cards
+        const cards = document.querySelectorAll('.category-card, .review-card, .platform-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

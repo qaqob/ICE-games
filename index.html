@@ -1,770 +1,275 @@
 <!doctype html>
-<html>
+<html lang="en">
     <head>
-        <link rel="stylesheet" href="hover.css">
-        <link rel="stylesheet" href="footer.css">
-        <title>ICEGames GameStation</title>
+        <meta charset="UTF-8" />
+        <title>ICEGames</title>
 
         <style>
-            /* ✅ MOVING ICE BACKGROUND */
+            html,
             body {
                 margin: 0;
-                font-family: Arial;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                background: radial-gradient(
+                    circle at center,
+                    #0ff 0%,
+                    #001018 65%
+                );
+                font-family: "Segoe UI", Arial, sans-serif;
                 color: cyan;
-                text-align: center;
-                background: linear-gradient(270deg, #001, #004, #00aaff, #001);
-                background-size: 600% 600%;
-                animation: iceMove 20s ease infinite;
             }
 
-            @keyframes iceMove {
-                0% {
-                    background-position: 0% 50%;
+            /* ===== BACKGROUND DEPTH ===== */
+            .layer {
+                position: absolute;
+                width: 300%;
+                height: 300%;
+                top: -100%;
+                left: -100%;
+                pointer-events: none;
+            }
+
+            .layer.one {
+                background: repeating-linear-gradient(
+                    45deg,
+                    rgba(255, 255, 255, 0.03),
+                    rgba(255, 255, 255, 0.03) 14px,
+                    transparent 14px,
+                    transparent 28px
+                );
+                animation: driftSlow 140s linear infinite;
+            }
+
+            .layer.two {
+                background: repeating-linear-gradient(
+                    -45deg,
+                    rgba(255, 255, 255, 0.02),
+                    rgba(255, 255, 255, 0.02) 10px,
+                    transparent 10px,
+                    transparent 20px
+                );
+                animation: driftFast 80s linear infinite;
+            }
+
+            @keyframes driftSlow {
+                to {
+                    transform: translate(-40%, -40%);
+                }
+            }
+            @keyframes driftFast {
+                to {
+                    transform: translate(40%, 40%);
+                }
+            }
+
+            /* ===== CENTER STAGE ===== */
+            .stage {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 5;
+            }
+
+            /* ===== LOGO ===== */
+            .logo-wrap {
+                text-align: center;
+                perspective: 800px;
+            }
+
+            /* Letter container */
+            .logo {
+                display: flex;
+                font-size: 110px;
+                font-weight: 900;
+                letter-spacing: 6px;
+            }
+
+            /* Individual letter */
+            .letter {
+                display: inline-block;
+                position: relative;
+                color: cyan;
+                text-shadow:
+                    0 0 20px cyan,
+                    0 0 60px rgba(0, 255, 255, 0.9);
+                animation:
+                    floatWave 4s ease-in-out infinite,
+                    glowPulse 3s ease-in-out infinite;
+            }
+
+            /* Make "Games" white */
+            .letter.white {
+                color: white;
+                text-shadow:
+                    0 0 20px white,
+                    0 0 60px rgba(255, 255, 255, 0.8);
+            }
+
+            @keyframes floatWave {
+                0%,
+                100% {
+                    transform: translateY(0) rotateX(0deg);
                 }
                 50% {
-                    background-position: 100% 50%;
+                    transform: translateY(-22px) rotateX(10deg);
                 }
+            }
+
+            @keyframes glowPulse {
+                0%,
                 100% {
-                    background-position: 0% 50%;
+                    filter: brightness(1);
+                }
+                50% {
+                    filter: brightness(1.6);
                 }
             }
 
-            /* ✅ FLOATING ICE PARTICLES */
-            .ice-particle {
-                position: fixed;
-                width: 6px;
-                height: 6px;
-                background: cyan;
-                border-radius: 50%;
-                opacity: 0.7;
-                pointer-events: none;
-                animation: floatUp linear infinite;
-            }
-
-            @keyframes floatUp {
-                from {
-                    transform: translateY(110vh);
-                }
-                to {
-                    transform: translateY(-10vh);
-                }
-            }
-
-            header {
-                font-size: 36px;
-                padding: 20px;
-                background: rgba(0, 0, 0, 0.85);
-            }
-
-            nav {
-                background: rgba(0, 0, 0, 0.9);
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                padding: 10px;
-            }
-
-            nav a {
-                color: cyan;
-                text-decoration: none;
-                margin: 6px 12px;
-                font-weight: bold;
-            }
-
-            nav a:hover {
-                color: white;
-            }
-
-            .category {
-                padding: 30px 15px;
-            }
-
-            .games {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-                gap: 15px;
-                margin-top: 15px;
-            }
-
-            .game {
-                background: rgba(0, 0, 0, 0.75);
-                padding: 12px;
-                border-radius: 12px;
-                box-shadow: 0 0 12px cyan;
-            }
-
-            .game a {
-                color: white;
-                text-decoration: none;
-                font-weight: bold;
-            }
-
-            .game a:hover {
-                color: cyan;
-            }
-            /* ===== ICEGAMES ANIMATED LOGO ===== */
-            .logo-container {
-                padding: 30px 10px 25px;
-                background: rgba(0, 0, 0, 0.85);
-                box-shadow: 0 0 20px cyan;
-            }
-
-            .ice-logo {
-                font-size: 64px;
-                font-weight: 900;
-                color: cyan;
-                letter-spacing: 5px;
-                position: relative;
-                display: inline-block;
-                text-shadow:
-                    0 0 10px cyan,
-                    0 0 20px cyan,
-                    0 0 40px cyan;
-                animation: pulseGlow 3s ease-in-out infinite;
-                overflow: hidden;
-            }
-
-            .ice-logo span {
-                color: white;
-            }
-
-            /* Light sweep animation */
-            .ice-logo::after {
+            /* ===== SHIMMER SCAN ===== */
+            .letter::after {
                 content: "";
                 position: absolute;
-                top: 0;
-                left: -150%;
-                width: 70%;
-                height: 100%;
+                inset: 0;
                 background: linear-gradient(
                     120deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.7),
-                    transparent
+                    transparent 30%,
+                    rgba(255, 255, 255, 0.8),
+                    transparent 70%
                 );
-                animation: logoShine 4s infinite;
+                opacity: 0;
+                animation: shimmer 5s infinite;
             }
 
-            .logo-sub {
-                font-size: 18px;
-                color: #aff;
-                margin-top: 5px;
-                letter-spacing: 2px;
-            }
-
-            /* Logo Animations */
-            @keyframes pulseGlow {
+            @keyframes shimmer {
                 0% {
-                    transform: scale(1);
-                    text-shadow: 0 0 10px cyan;
+                    opacity: 0;
+                    transform: translateX(-100%);
                 }
-                50% {
-                    transform: scale(1.04);
-                    text-shadow: 0 0 35px cyan;
+                20% {
+                    opacity: 0.8;
                 }
-                100% {
-                    transform: scale(1);
-                    text-shadow: 0 0 10px cyan;
-                }
-            }
-
-            @keyframes logoShine {
-                0% {
-                    left: -150%;
-                }
-                50% {
-                    left: 150%;
-                }
-                100% {
-                    left: 150%;
+                40% {
+                    opacity: 0;
+                    transform: translateX(100%);
                 }
             }
 
-            /* ===== SEARCH BAR ===== */
-            #searchBar {
-                margin-top: 20px;
-                width: 50%;
-                padding: 12px;
-                font-size: 17px;
-                border-radius: 10px;
-                border: none;
-                outline: none;
-                background: rgba(0, 255, 255, 0.1);
+            /* ===== SUBTITLE ===== */
+            .subtitle {
+                font-size: 28px;
+                margin-top: 16px;
+                opacity: 0.85;
+            }
+
+            /* ===== ENTER BUTTON ===== */
+            .enter {
+                display: inline-block;
+                margin-top: 50px;
+                padding: 16px 50px;
+                border-radius: 40px;
+                font-size: 22px;
+                border: 2px solid cyan;
                 color: cyan;
-                box-shadow: 0 0 10px cyan;
+                text-decoration: none;
+                box-shadow: 0 0 30px cyan;
+                transition: 0.3s;
             }
 
-            #searchBar::placeholder {
-                color: #99ffff;
-            }
-            /* ===== INFO SECTIONS ===== */
-            .info-section {
-                background: rgba(0, 0, 0, 0.75);
-                margin: 40px auto;
-                width: 80%;
-                padding: 30px;
-                border-radius: 15px;
-                box-shadow: 0 0 15px cyan;
-                color: white;
-            }
-
-            .info-section h2 {
-                font-size: 32px;
-                color: cyan;
-                text-shadow: 0 0 10px cyan;
-                margin-bottom: 10px;
-            }
-
-            .info-section h3 {
-                color: #88ffff;
-                margin-top: 20px;
-            }
-
-            .info-section p {
-                line-height: 1.5;
-                font-size: 16px;
-            }
-
-            /* ===== CONTACT FORM ===== */
-            .contact-form {
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-                margin-top: 20px;
-            }
-
-            .contact-form input,
-            .contact-form textarea {
-                padding: 12px;
-                font-size: 16px;
-                background: rgba(0, 255, 255, 0.1);
-                border-radius: 10px;
-                border: none;
-                color: cyan;
-                box-shadow: 0 0 8px cyan;
-            }
-
-            .contact-form textarea {
-                height: 130px;
-                resize: none;
-            }
-
-            .contact-form button {
-                padding: 12px;
-                border: none;
-                border-radius: 10px;
-                font-size: 18px;
-                font-weight: bold;
+            .enter:hover {
                 background: cyan;
                 color: black;
-                cursor: pointer;
-                box-shadow: 0 0 12px cyan;
+                box-shadow: 0 0 90px cyan;
             }
 
-            .contact-form button:hover {
-                background: white;
-                box-shadow: 0 0 20px cyan;
-            }
-            .logo-link {
-                text-decoration: none;
-                color: inherit;
-            }
-            .logo-link:hover {
-                opacity: 0.9;
-            }
-            /* ===== ICE FOOTER ===== */
-            .ice-footer {
-                background: rgba(0, 0, 0, 0.9);
-                padding: 25px 10px;
-                text-align: center;
-                color: #99ffff;
-                box-shadow: 0 0 20px cyan;
-                margin-top: 40px;
-            }
-
-            .ice-footer p {
-                margin: 8px 0;
-            }
-
-            .social-icons {
-                margin: 15px 0;
-            }
-
-            .social-icons a {
-                font-size: 26px;
-                margin: 0 15px;
-                text-decoration: none;
-                color: cyan;
-                transition:
-                    transform 0.2s,
-                    color 0.2s;
-            }
-
-            .social-icons a:hover {
-                transform: scale(1.3);
-                color: white;
-            }
-
-            .footer-text {
-                font-size: 14px;
-                opacity: 0.8;
+            /* ===== ICE SHARDS ===== */
+            .shard {
+                position: absolute;
+                width: 12px;
+                height: 34px;
+                background: linear-gradient(
+                    to bottom,
+                    rgba(200, 255, 255, 0.9),
+                    rgba(0, 255, 255, 0.15)
+                );
+                clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+                box-shadow: 0 0 25px cyan;
+                pointer-events: none;
             }
         </style>
     </head>
 
     <body>
-        <div id="top"></div>
+        <div class="layer one"></div>
+        <div class="layer two"></div>
 
-        <header class="logo-container">
-            <a href="#top" class="logo-link">
-                <div class="ice-logo">ICE<span>Games</span></div>
-                <div class="logo-sub">GameStation</div>
-            </a>
+        <div class="stage">
+            <div class="logo-wrap">
+                <div class="logo" id="logo">
+                    <!-- Letters inserted by JS -->
+                </div>
 
-            <input
-                type="text"
-                id="searchBar"
-                placeholder="Search games..."
-                onkeyup="searchGames()"
-            />
-        </header>
-
-        <!-- ✅ NAV BAR (10 CATEGORIES) -->
-        <nav>
-            <a href="index.html">Home</a>
-
-            <a href="#action">Action</a>
-            <a href="#adventure">Adventure</atransp     >
-            <a href="#racing">Racing</a>
-            <a href="#shooting">Shooting</a>
-            <a href="#puzzle">Puzzle</a>
-            <a href="#sports">Sports</a>
-            <a href="#horror">Horror</a>
-            <a href="#strategy">Strategy</a>
-            <a href="#retro">Retro</a>
-
-            <a href="about.html">About</a>
-            <a href="faq.html">FAQ</a>
-            <a href="contact.html">Contact</a>
-
-            <a href="login.html">Login</a>
-            <a href="signup.html">Sign Up</a>
-        </nav>
-
-        <!-- ✅ ACTION -->
-        <div id="action" class="category">
-            <h2>🔥 Action</h2>
-            <div class="games">
-                <a href="games/mai (2).html" class="hover-link">mario
-                    <div class="preview">
-                      <img src="hover-images/super-mario-flash-game-m340x190.png">
-                    </div>
-                </a>
-
-                <a href="games/age-of-war.html" class="hover-link">age of war</a>
-                <a href="games/bloxorz.html" class="hover-link">bloxorz</a>
-                <a href="games/doom.html" class="hover-link">doom</a>
-                <a href="games/crash.html" class="hover-link">crash</a>
-                <a href="games/sonic.html" class="hover-link">sonic</a>
-                <a href="games/age-of-war2.html" class="hover-link">age of war 2</a>
-                <a href="games/action8.html" class="hover-link">Action 8</a>
-                <a href="games/action9.html" class="hover-link">Action 9</a>
-                <a href="games/action10.html" class="hover-link">Action 10</a>
+                <div class="subtitle">GameStation</div>
+                <a class="enter" href="home.html">Enter the Ice</a>
             </div>
         </div>
 
-        <!-- ✅ ADVENTURE  may remove ...-->
-        <div id="adventure" class="category">
-            <h2>🧭 Adventure</h2>
-            <div class="games">
-                <a href="games/sonic.html" class="game">sonic</a
-                ><a href="games/adventure2.html" class="game">Adventure 2</a>
-                <a href="games/adventure3.html" class="game">Adventure 3</a
-                ><a href="games/adventure4.html" class="game">Adventure 4</a>
-                <a href="games/adventure5.html" class="game">Adventure 5</a
-                ><a href="games/adventure6.html" class="game">Adventure 6</a>
-                <a href="games/adventure7.html" class="game">Adventure 7</a
-                ><a href="games/adventure8.html" class="game">Adventure 8</a>
-                <a href="games/adventure9.html" class="game">Adventure 9</a
-                ><a href="games/adventure10.html" class="game">Adventure 10</a>
-            </div>
-        </div>
-
-        <!-- ✅ RACING -->
-        <div id="racing" class="category">
-            <h2>🏎 Racing</h2>
-            <div class="games">
-                <a href="games/4x4.html" class="game">4x4</a
-                ><a href="games/neon_riders.html" class="game">Neon Riders</a>
-                <a href="games/trucks.html" class="game">Trucks</a
-                ><a href="games/roadkillrevenge.html" class="game">Roadkill Revenge</a>
-                <a href="games/run2.html" class="game">run2</a>
-                <a href="games/earntodie.html" class="game">earntodie</a>
-                <a href="games/racing6.html" class="game">Racing 6</a>
-                <a href="games/racing7.html" class="game">Racing 7</a
-                ><a href="games/racing8.html" class="game">Racing 8</a>
-                <a href="games/racing9.html" class="game">Racing 9</a
-                ><a href="games/racing10.html" class="game">Racing 10</a>
-            </div>
-        </div>
-
-        <!-- ✅ SHOOTING -->
-        <div id="shooting" class="category">
-            <h2>🔫 Shooting</h2>
-            <div class="games">
-                <a href="games/shooting1.html" class="game">Shooting 1</a
-                ><a href="games/shooting2.html" class="game">Shooting 2</a>
-                <a href="games/shooting3.html" class="game">Shooting 3</a
-                ><a href="games/shooting4.html" class="game">Shooting 4</a>
-                <a href="games/shooting5.html" class="game">Shooting 5</a
-                ><a href="games/shooting6.html" class="game">Shooting 6</a>
-                <a href="games/shooting7.html" class="game">Shooting 7</a
-                ><a href="games/shooting8.html" class="game">Shooting 8</a>
-                <a href="games/shooting9.html" class="game">Shooting 9</a
-                ><a href="games/shooting10.html" class="game">Shooting 10</a>
-            </div>
-        </div>
-
-        <!-- ✅ PUZZLE -->
-        <div id="puzzle" class="category">
-            <h2>🧩 Puzzle</h2>
-            <div class="games">
-                <a href="games/the-worlds-hardest-game.html" class="game"
-                    >the worlds hardest game</a
-                ><a href="games/tetris.html" class="game">tetris</a>
-                <a href="games/puzzle3.html" class="game">Puzzle 3</a
-                ><a href="games/puzzle4.html" class="game">Puzzle 4</a>
-                <a href="games/puzzle5.html" class="game">Puzzle 5</a
-                ><a href="games/puzzle6.html" class="game">Puzzle 6</a>
-                <a href="games/puzzle7.html" class="game">Puzzle 7</a
-                ><a href="games/puzzle8.html" class="game">Puzzle 8</a>
-                <a href="games/puzzle9.html" class="game">Puzzle 9</a
-                ><a href="games/puzzle10.html" class="game">Puzzle 10</a>
-            </div>
-        </div>
-
-        <!-- ✅ SPORTS -->
-        <div id="sports" class="category">
-            <h2>⚽ Sports</h2>
-            <div class="games">
-                <a href="games/penalty.html" class="game">penalty game</a
-                ><a href="games/penalty2.html" class="game">penalty game 2</a>
-                <a href="games/sports3.html" class="game">Sports 3</a
-                ><a href="games/sports4.html" class="game">Sports 4</a>
-                <a href="games/sports5.html" class="game">Sports 5</a
-                ><a href="games/sports6.html" class="game">Sports 6</a>
-                <a href="games/sports7.html" class="game">Sports 7</a
-                ><a href="games/sports8.html" class="game">Sports 8</a>
-                <a href="games/sports9.html" class="game">Sports 9</a
-                ><a href="games/sports10.html" class="game">Sports 10</a>
-            </div>
-        </div>
-
-        <!-- ✅ COOKING -->
-        <div id="cooking" class="category">
-            <h2>🍳 Cooking</h2>
-            <div class="games">
-                <a href="games/cooking-show.html" class="game">Cooking show</a
-                ><a href="games/hot-dog-bush.html" class="game">hot-dog-bush</a>
-                <a href="games/papasburgeria.html" class="game">papa's burgeria</a
-                ><a href="games/papaspizzaeria.html" class="game">papa's pizzaeria</a>
-                <a href="games/papaspancake.html" class="game">papa's pancakeria</a
-                ><a href="games/papasfreeze.html" class="game">papa's freezeria</a>
-                <a href="games/cooking7.html" class="game">Cooking 7</a
-                ><a href="games/cooking8.html" class="game">Cooking 8</a>
-                <a href="games/cooking9.html" class="game">Cooking 9</a
-                ><a href="games/cooking10.html" class="game">Cooking 10</a>
-            </div>
-        </div>
-
-        <!-- ✅ STRATEGY -->
-        <div id="strategy" class="category">
-            <h2>♟ Strategy</h2>
-            <div class="games">
-                <a href="games/strategy1.html" class="game">Strategy 1</a
-                ><a href="games/strategy2.html" class="game">Strategy 2</a>
-                <a href="games/strategy3.html" class="game">Strategy 3</a
-                ><a href="games/strategy4.html" class="game">Strategy 4</a>
-                <a href="games/strategy5.html" class="game">Strategy 5</a
-                ><a href="games/strategy6.html" class="game">Strategy 6</a>
-                <a href="games/strategy7.html" class="game">Strategy 7</a
-                ><a href="games/strategy8.html" class="game">Strategy 8</a>
-                <a href="games/strategy9.html" class="game">Strategy 9</a
-                ><a href="games/strategy10.html" class="game">Strategy 10</a>
-            </div>
-        </div>
-
-        <!-- ✅ RETRO -->
-        <div id="retro" class="category">
-            <h2>🕹 Retro</h2>
-            <div class="games">
-                <a href="games/pacman.html" class="game">pacman</a
-                ><a href="games/fireboy.html" class="game">fire boy and watergirl</a>
-                <a href="games/flappybird.html" class="game">flappy bird</a
-                ><a href="games/minesweeper.html" class="game">minesweeper</a>
-                <a href="games/tetris.html" class="game">tetris</a
-                ><a href="games/the-worlds-hardest-game.html" class="game">the worlds hardest game</a>
-                <a href="games/2048.html" class="game">2048</a
-                ><a href="games/retro8.html" class="game">Retro 8</a>
-                <a href="games/retro9.html" class="game">Retro 9</a
-                ><a href="games/retro10.html" class="game">Retro 10</a>
-            </div>
-        </div>
-
-        <!-- ✅ MULTIPLAYER -->
-        <div id="multiplayer" class="category">
-            <h2>🌐 Multiplayer</h2>
-            <div class="games">
-                <a href="games/xtank.html" class="game">tank war</a
-                ><a href="games/bomb-it-2.html" class="game">bomb it 2</a>
-                <a href="games/bomb-it.html" class="game">bomb it</a
-                ><a href="games/multi4.html" class="game">Multi 4</a>
-                <a href="games/multi5.html" class="game">Multi 5</a
-                ><a href="games/multi6.html" class="game">Multi 6</a>
-                <a href="games/multi7.html" class="game">Multi 7</a
-                ><a href="games/multi8.html" class="game">Multi 8</a>
-                <a href="games/multi9.html" class="game">Multi 9</a
-                ><a href="games/multi10.html" class="game">Multi 10</a>
-            </div>
-        </div>
-
-        <!-- ✅ ICE PARTICLE GENERATOR -->
         <script>
-            for (let i = 0; i < 50; i++) {
-                let p = document.createElement("div");
-                p.className = "ice-particle";
-                p.style.left = Math.random() * 100 + "vw";
-                p.style.animationDuration = 6 + Math.random() * 10 + "s";
-                p.style.opacity = Math.random();
-                document.body.appendChild(p);
+            /* ===== BUILD LOGO LETTER BY LETTER ===== */
+            const text = "ICEGames";
+            const logo = document.getElementById("logo");
+
+            [...text].forEach((char, i) => {
+                const span = document.createElement("span");
+                span.className = "letter" + (i >= 3 ? " white" : "");
+                span.textContent = char;
+
+                span.style.animationDelay = `${i * 0.15}s`;
+                span.style.setProperty("--i", i);
+
+                logo.appendChild(span);
+            });
+
+            /* ===== ICE SHARDS ===== */
+            for (let i = 0; i < 80; i++) {
+                const s = document.createElement("div");
+                s.className = "shard";
+                reset(s);
+                document.body.appendChild(s);
+                animate(s);
             }
-        </script>
-        <script>
-            function searchGames() {
-                let input = document
-                    .getElementById("searchBar")
-                    .value.toLowerCase();
-                let games = document.querySelectorAll(".game");
 
-                games.forEach((game) => {
-                    let text = game.innerText.toLowerCase();
-                    game.style.display = text.includes(input)
-                        ? "block"
-                        : "none";
-                });
+            function reset(s) {
+                s.x = Math.random() * window.innerWidth;
+                s.y = Math.random() * window.innerHeight;
+                s.speed = 0.4 + Math.random() * 2;
+                s.rot = Math.random() * 360;
+                s.scale = 0.5 + Math.random();
             }
-        </script>
-        <footer class="ice-footer">
-            <footer class="pro-footer">
-                <!-- Background Effects -->
-                <div class="footer-bg">
-                    <div class="grid-lines"></div>
-                    <div class="particles-container" id="particles"></div>
-                </div>
 
-                <!-- Top Decoration -->
-                <div class="footer-top"></div>
-
-                <!-- Main Content -->
-                <div class="footer-content">
-                    <!-- Quick Links -->
-                    <div class="footer-section">
-                        <h3 class="section-title">Quick Links</h3>
-                        <ul class="footer-links">
-                            <li><a href="#">🏠 Home</a></li>
-                            <li><a href="#">🎮 All Games</a></li>
-                            <li><a href="#">🔥 New Releases</a></li>
-                            <li><a href="#">⭐ Top Rated</a></li>
-                            <li><a href="#">📈 Trending</a></li>
-                            <li><a href="#">🕹️ Retro Collection</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Game Categories -->
-                    <div class="footer-section">
-                        <h3 class="section-title">Categories</h3>
-                        <ul class="footer-links">
-                            <li><a href="#">⚡ Action</a></li>
-                            <li><a href="#">🧭 Adventure</a></li>
-                            <li><a href="#">🏎️ Racing</a></li>
-                            <li><a href="#">🔫 Shooting</a></li>
-                            <li><a href="#">🧩 Puzzle</a></li>
-                            <li><a href="#">⚽ Sports</a></li>
-                            <li><a href="#">🍳 Cooking</a></li>
-                            <li><a href="#">🎮 Strategy</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Connect With Us -->
-                    <div class="footer-section">
-                        <h3 class="section-title">Connect</h3>
-                        <div class="social-grid">
-                            <a href="#" class="social-icon" title="Discord">
-                                <span>💬</span>
-                            </a>
-                            <a href="#" class="social-icon" title="Twitter">
-                                <span>🐦</span>
-                            </a>
-                            <a href="#" class="social-icon" title="YouTube">
-                                <span>🎥</span>
-                            </a>
-                            <a href="#" class="social-icon" title="Instagram">
-                                <span>📸</span>
-                            </a>
-                            <a href="#" class="social-icon" title="Twitch">
-                                <span>🎮</span>
-                            </a>
-                            <a href="#" class="social-icon" title="Reddit">
-                                <span>👾</span>
-                            </a>
-                        </div>
-
-                        <div class="newsletter-form">
-                            <h3 class="section-title" style="font-size: 18px; margin-top: 25px;">Newsletter</h3>
-                            <input type="email" placeholder="Enter your email" class="newsletter-input">
-                            <button class="newsletter-btn">Subscribe ❄️</button>
-                        </div>
-                    </div>
-
-                    <!-- Support & Info -->
-                    <div class="footer-section">
-                        <h3 class="section-title">Support</h3>
-                        <ul class="footer-links">
-                            <li><a href="#">📞 Contact Us</a></li>
-                            <li><a href="#">❓ FAQ</a></li>
-                            <li><a href="#">📖 How to Play</a></li>
-                            <li><a href="#">⚙️ Game Controls</a></li>
-                            <li><a href="#">🛡️ Privacy Policy</a></li>
-                            <li><a href="#">📜 Terms of Service</a></li>
-                            <li><a href="#">👨‍💻 Submit Game</a></li>
-                            <li><a href="#">🌟 Rate Us</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Bottom Section -->
-                <div class="footer-bottom">
-                    <div class="footer-logo">ICEGAMES</div>
-
-                    <div class="legal-links">
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Service</a>
-                        <a href="#">Cookie Policy</a>
-                        <a href="#">DMCA</a>
-                        <a href="#">Contact</a>
-                    </div>
-
-                    <p class="copyright">
-                        © 2025 ICEGames GameStation. All rights reserved.
-                    </p>
-                    <p class="copyright">
-                        Preserving the Flash Era • Made with ❄️ for gamers worldwide
-                    </p>
-                    <p class="copyright" style="font-size: 12px; margin-top: 20px;">
-                        ICEGames is not affiliated with any game developers. All games are property of their respective owners.
-                    </p>
-                </div>
-            </footer>
-
-            <!-- Back to Top Button -->
-            <a href="#" class="back-to-top" id="backToTop">↑</a>
-
-            <script>
-                // Create animated particles
-                function createParticles() {
-                    const container = document.getElementById('particles');
-                    for (let i = 0; i < 50; i++) {
-                        const particle = document.createElement('div');
-                        particle.className = 'particle';
-
-                        // Random properties
-                        const size = Math.random() * 4 + 1;
-                        const posX = Math.random() * 100;
-                        const posY = Math.random() * 100;
-                        const duration = Math.random() * 20 + 10;
-                        const delay = Math.random() * 5;
-
-                        // Apply styles
-                        particle.style.width = `${size}px`;
-                        particle.style.height = `${size}px`;
-                        particle.style.left = `${posX}%`;
-                        particle.style.top = `${posY}%`;
-                        particle.style.animation = `float ${duration}s linear infinite ${delay}s`;
-
-                        container.appendChild(particle);
+            function animate(s) {
+                function move() {
+                    s.y += s.speed;
+                    s.rot += 0.4;
+                    if (s.y > window.innerHeight + 40) {
+                        s.y = -40;
+                        s.x = Math.random() * window.innerWidth;
                     }
+                    s.style.transform = `translate(${s.x}px, ${s.y}px) rotate(${s.rot}deg) scale(${s.scale})`;
+                    requestAnimationFrame(move);
                 }
+                move();
+            }
 
-                // Back to top functionality
-                window.addEventListener('scroll', function() {
-                    const backToTop = document.getElementById('backToTop');
-                    if (window.pageYOffset > 300) {
-                        backToTop.classList.add('visible');
-                    } else {
-                        backToTop.classList.remove('visible');
-                    }
-                });
-
-                // Smooth scroll for back to top
-                document.getElementById('backToTop').addEventListener('click', function(e) {
-                    e.preventDefault();
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-
-                // Footer section hover effects
-                document.querySelectorAll('.footer-section').forEach(section => {
-                    section.addEventListener('mouseenter', function() {
-                        this.style.zIndex = '10';
-                    });
-
-                    section.addEventListener('mouseleave', function() {
-                        this.style.zIndex = '2';
-                    });
-                });
-
-                // Initialize everything when page loads
-                document.addEventListener('DOMContentLoaded', function() {
-                    createParticles();
-
-                    // Add floating animation
-                    const style = document.createElement('style');
-                    style.textContent = `
-                        @keyframes float {
-                            0%, 100% {
-                                transform: translateY(0) rotate(0deg);
-                            }
-                            25% {
-                                transform: translateY(-20px) rotate(90deg);
-                            }
-                            50% {
-                                transform: translateY(-40px) rotate(180deg);
-                            }
-                            75% {
-                                transform: translateY(-20px) rotate(270deg);
-                            }
-                        }
-                    `;
-                    document.head.appendChild(style);
-
-                    // Newsletter form submission
-                    document.querySelector('.newsletter-btn').addEventListener('click', function(e) {
-                        e.preventDefault();
-                        const input = document.querySelector('.newsletter-input');
-                        if (input.value) {
-                            this.textContent = 'Subscribed! ❄️';
-                            this.style.background = 'linear-gradient(135deg, #00ff88, #00cc66)';
-                            setTimeout(() => {
-                                this.textContent = 'Subscribe ❄️';
-                                this.style.background = '';
-                            }, 2000);
-                            input.value = '';
-                        }
-                    });
-                });
-            </script>
-        </footer>
+            /* ===== PARALLAX CAMERA ===== */
+            document.addEventListener("mousemove", (e) => {
+                const x = (e.clientX / innerWidth - 0.5) * 40;
+                const y = (e.clientY / innerHeight - 0.5) * 40;
+                document.querySelector(".logo-wrap").style.transform =
+                    `translate(${x}px, ${y}px)`;
+            });
+        </script>
     </body>
 </html>

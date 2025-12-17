@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Super Mario | ICEGames</title>
+        <link rel="stylesheet" href="game-style.css" />
+        <style>
+            /* ===== ICEGAMES GAME PAGE STYLE ===== */
+
+            body {
+                margin: 0;
+                font-family: Arial;
+                color: cyan;
+                text-align: center;
+                background: linear-gradient(270deg, #001, #004, #00aaff, #001);
+                background-size: 600% 600%;
+                animation: iceMove 20s ease infinite;
+            }
+
+            @keyframes iceMove {
+                0% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+
+            /* Header */
+            header {
+                padding: 20px;
+                background: rgba(0, 0, 0, 0.85);
+                box-shadow: 0 0 20px cyan;
+            }
+
+            .ice-logo {
+                font-size: 48px;
+                font-weight: 900;
+                color: cyan;
+                text-shadow: 0 0 20px cyan;
+            }
+
+            .ice-logo span {
+                color: white;
+            }
+
+            /* ===== GAME CONTAINER ===== */
+            .game-wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: calc(100vh - 160px);
+                padding: 20px;
+            }
+
+            .game-box {
+                background: rgba(0, 0, 0, 0.85);
+                padding: 20px;
+                border-radius: 18px;
+                box-shadow: 0 0 25px cyan;
+            }
+
+            /* iframe / canvas / ruffle */
+            .game-box iframe,
+            .game-box canvas,
+            .game-box embed {
+                width: 800px;
+                height: 600px;
+                max-width: 100%;
+                border-radius: 12px;
+                border: none;
+                box-shadow: 0 0 20px cyan;
+            }
+
+            /* Footer */
+            footer {
+                background: rgba(0, 0, 0, 0.9);
+                padding: 15px;
+                color: #99ffff;
+                box-shadow: 0 0 20px cyan;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <a href="../index.html" style="text-decoration: none">
+                <div class="ice-logo">ICE<span>Games</span></div>
+            </a>
+        </header>
+
+        <div class="game-wrapper">
+            <div class="game-box">
+                <!-- OPTION 1: HTML GAME -->
+                <!-- <canvas id="gameCanvas"></canvas> -->
+
+                <!-- OPTION 2: IFRAME GAME -->
+                <iframe src="mario-game/index.html"></iframe>
+
+                <!-- OPTION 3: FLASH / RUFFLE -->
+                <!--
+        <embed src="mario.swf">
+        -->
+            </div>
+        </div>
+
+        <footer>© 2025 ICEGames — GameStation</footer>
+    </body>
+</html>

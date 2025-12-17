@@ -1,0 +1,59 @@
+/* Link: completely normal, no effects */
+.hover-link {
+    position: relative;
+    display: inline-block;
+    color: inherit; /* keep default color */
+    text-decoration: none; /* or remove this line if you want underline */
+}
+/* Match the black box style used by .game */
+.hover-link {
+    background: rgba(0, 0, 0, 0.75);
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px cyan;
+
+    display: inline-block;
+    color: cyan;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Keep text color behavior consistent */
+.hover-link:hover {
+    color: cyan;
+}
+
+/* Image preview with effects */
+.hover-link .preview {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    width: 500px;
+    height: 300px;
+
+    transform: translate(-50%, -50%) scale(0.85);
+    opacity: 0;
+
+    border-radius: 14px;
+    overflow: hidden;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.hover-link .preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Hover: ONLY affects the image */
+.hover-link:hover .preview {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}

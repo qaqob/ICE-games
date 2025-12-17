@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+    <title>Super Mario | ICEGames</title>
+    <link rel="stylesheet" href="../game-style.css">
+</head>
+
+<body>
+
+<header>
+    <a href="../index.html" style="text-decoration:none;">
+        <div class="ice-logo">ICE<span>Games</span></div>
+    </a>
+</header>
+
+<div class="game-wrapper">
+    <div class="game-box">
+
+        <!-- LOADING OVERLAY -->
+        <div class="loading-overlay" id="loading">
+            <div class="loader"></div>
+            <div>Loading game...</div>
+        </div>
+
+        <!-- GAME INFO -->
+        <div class="game-info">
+            <h1>Super Mario</h1>
+            <p>
+                Jump, run, and defeat enemies in this classic Mario adventure.
+                Collect coins, avoid traps, and reach the flag!
+            </p>
+        </div>
+
+        <!-- GAME -->
+        <iframe
+            id="gameFrame"
+            src="mario-game/index.html"
+            onload="hideLoader()"
+        ></iframe>
+
+        <!-- CONTROLS -->
+        <div class="game-controls">
+            <button onclick="goFullscreen()">🔳 Fullscreen</button>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    © 2025 ICEGames — GameStation
+</footer>
+
+<script>
+function goFullscreen() {
+    const game = document.getElementById("gameFrame");
+    if (game.requestFullscreen) game.requestFullscreen();
+    else if (game.webkitRequestFullscreen) game.webkitRequestFullscreen();
+    else if (game.msRequestFullscreen) game.msRequestFullscreen();
+}
+
+function hideLoader() {
+    document.getElementById("loading").style.display = "none";
+}
+</script>
+
+</body>
+</html>
